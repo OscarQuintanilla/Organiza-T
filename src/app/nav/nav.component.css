@@ -1,3 +1,30 @@
+.ContenedorGeneral {
+    width: auto;
+    box-sizing: border-box;
+    height: 100%;
+    
+  }
+#BarNav{
+    height: 100%;
+    border: solid;
+
+}
+mat-drawer{
+    padding-top: 2%;
+    width: 15%;
+}
+#usSideBar{
+    box-sizing: border-box;
+    text-align: center;
+    padding: 10%;
+    width: 100%;
+}
+#imgSideBar{
+    position: relative;
+    width: 70%;
+    margin: auto;
+    border-radius: 100%;
+}
 /* Estos estilos afectan a la barra de navegación  lateral */
 #lateral{
     box-sizing: border-box;

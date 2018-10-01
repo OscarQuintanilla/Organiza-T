@@ -1,3 +1,4 @@
+@import "~@angular/material/prebuilt-themes/purple-green.css";
 html, body{
     height: 100%;
     margin: 0%;
@@ -6,3 +7,4 @@ html, body{
     src: url("assets/fonts/coolvetica.ttf");
     font-family: "Coolvetica";
 }
+
