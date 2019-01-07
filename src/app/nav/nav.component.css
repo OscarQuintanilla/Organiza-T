@@ -38,6 +38,12 @@ mat-drawer{
     margin: 0px;
     width: 15%;
 }
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
 article{
     background-color: rgb(113,168,39);
     box-sizing: border-box;

@@ -1,32 +1,43 @@
-<mat-drawer-container class="ContenedorGeneral" [hasBackdrop]="true">
-  <mat-drawer #drawer [mode]="side" id="barNav" opened>
+<mat-drawer-container class="ContenedorGeneral" [hasBackdrop]="false">
+  <mat-drawer #drawer mode="side" id="barNav">
     <!-- Contenido de la sidebar -->
     <mat-list>
-      <div id="usSideBar" >
-        <img src="../../assets/img/fotoperfil.jpeg" alt="Imagen de Perfil" id="imgSideBar">
-        <h1 class="mat-title">Oscar Quintanilla</h1>
-      </div> 
+      <a [routerLink]="['/perfil']">
+        <div id="usSideBar">
+          <img src="../../assets/img/foto.jpeg" alt="Imagen de Perfil" id="imgSideBar">
+          <h1 class="mat-title"> Oscar Quintanilla</h1>
+        </div>
+      </a>
       <mat-divider></mat-divider>
-      <mat-list-item>Inicio</mat-list-item>
+      <a [routerLink]="['/inicio']" [routerLinkActive]="['activo']">
+        <mat-list-item>Inicio</mat-list-item>
+      </a>
       <mat-divider></mat-divider>
-      <mat-list-item>Tareas</mat-list-item>
+      <a [routerLink]="['/tareas']" [routerLinkActive]="['activo']">
+        <mat-list-item>Tareas</mat-list-item>
+      </a>
       <mat-divider></mat-divider>
-      <mat-list-item>Evaluaciones</mat-list-item>
+      <a [routerLink]="['/evaluaciones']" [routerLinkActive]="['activo']">
+        <mat-list-item>Evaluaciones</mat-list-item>
+      </a>
       <mat-divider></mat-divider>
-      <mat-list-item>Materias</mat-list-item>
+      <a [routerLink]="['/materias']" [routerLinkActive]="['activo']">
+        <mat-list-item>Materias</mat-list-item>
+      </a>
       <mat-divider></mat-divider>
-      <mat-list-item>Grupos</mat-list-item>
+      <a [routerLink]="['/grupos']">
+        <mat-list-item>Grupos</mat-list-item>
+      </a>
     </mat-list>
-
   </mat-drawer>
   <mat-drawer-content>
     <!-- Contenido de la toolbar -->
     <mat-toolbar>
       <button mat-icon-button (click)="drawer.toggle()">
-        <mat-icon>more_vert</mat-icon>
+        <mat-icon>menu</mat-icon>
       </button>
       <span>OrganizaT</span>
     </mat-toolbar>
-
+    <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>

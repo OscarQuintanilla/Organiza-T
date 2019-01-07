@@ -11,15 +11,14 @@ export class NavComponent implements OnInit {
 
     let funcionalidades = ["Grupos", "Materias"];
 
-   }
+  }
 
-  
+
 
   ngOnInit() {
-
     
+      
 
   }
 
 }
-
