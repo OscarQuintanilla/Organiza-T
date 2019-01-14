@@ -2,12 +2,12 @@ import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule} from '@angular/router';
 
 //Componentes
-import { PerfilComponent } from "./perfil/perfil.component";
-import { InicioComponent } from './inicio/inicio.component';
-import { TareasComponent } from './tareas/tareas.component';
-import { MateriasComponent } from './materias/materias.component';
-import { EvaluacionesComponent } from './evaluaciones/evaluaciones.component';
-import { GruposComponent } from './grupos/grupos.component';
+import { PerfilComponent } from "./components/perfil/perfil.component";
+import { InicioComponent } from './components/inicio/inicio.component';
+import { TareasComponent } from './components/tareas/tareas.component';
+import { MateriasComponent } from './components/materias/materias.component';
+import { EvaluacionesComponent } from './components/evaluaciones/evaluaciones.component';
+import { GruposComponent } from './components/grupos/grupos.component';
 import { PlantillasComponent } from './plantillas/plantillas.component';
 
 const appRoutes: Routes = [

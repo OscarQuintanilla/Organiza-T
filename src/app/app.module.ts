@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -10,13 +11,17 @@ import { routing, appRoutingProviders } from './app.routing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //Material
 import { MaterialModule } from './material';
-import { TareasComponent } from './tareas/tareas.component';
-import { EvaluacionesComponent } from './evaluaciones/evaluaciones.component';
-import { MateriasComponent } from './materias/materias.component';
-import { GruposComponent } from './grupos/grupos.component';
-import { InicioComponent } from './inicio/inicio.component';
-import { PerfilComponent } from './perfil/perfil.component';
-import { PlantillasComponent } from './plantillas/plantillas.component'
+import { TareasComponent } from './components/tareas/tareas.component';
+import { EvaluacionesComponent } from './components/evaluaciones/evaluaciones.component';
+import { MateriasComponent } from './components/materias/materias.component';
+import { GruposComponent } from './components/grupos/grupos.component';
+import { InicioComponent } from './components/inicio/inicio.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { PlantillasComponent } from './plantillas/plantillas.component';
+
+//Services
+import { TareasService } from './services/tareas.service';
+import { HttpClient } from 'selenium-webdriver/http';
 
 @NgModule({
   declarations: [
@@ -34,9 +39,10 @@ import { PlantillasComponent } from './plantillas/plantillas.component'
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
-    routing
+    routing,
+    HttpClientModule
   ],
-  providers: [ appRoutingProviders ],
+  providers: [ appRoutingProviders, TareasService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

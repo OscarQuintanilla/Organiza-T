@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Tareas } from './tareas';
-import { PeticionesService } from "../services/peticiones.services";
+import { TareasService } from '../../services/tareas.service';
+import { PeticionesService } from "../../services/peticiones.services";
 
 @Component({
   selector: 'app-tareas',
@@ -10,14 +11,16 @@ import { PeticionesService } from "../services/peticiones.services";
 })
 export class TareasComponent implements OnInit {
 
-  public nombre: string = "Oscar";
+  public nombre: string = "Oscar David";
   apellido: any = "Quintanilla";
 
   public tarea: Tareas;
 
   constructor(
-    private _peticionesService: PeticionesService
+    private _peticionesService: PeticionesService,
+    private tareasService: TareasService
   ) {
+    
     console.log("Carga exitosa de las tareas.");
     this.tarea = new Tareas(
       1,
@@ -28,11 +31,16 @@ export class TareasComponent implements OnInit {
       'Digital',
       "2018-31-01"
     );
+    
+
   }
 
   ngOnInit() {
     console.log(this._peticionesService.prueba());
-
+    this.tareasService.obtenerListaTareas().subscribe(
+      res => console.log(res), 
+      err=> console.error(err)
+    );
 
   }
 
