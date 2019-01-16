@@ -22,6 +22,7 @@ import { PlantillasComponent } from './plantillas/plantillas.component';
 //Services
 import { TareasService } from './services/tareas.service';
 import { HttpClient } from 'selenium-webdriver/http';
+import { FormTareasComponent } from './components/tareas/form-tareas/form-tareas.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { HttpClient } from 'selenium-webdriver/http';
     InicioComponent,
     PerfilComponent,
     PlantillasComponent,
+    FormTareasComponent,
   ],
   imports: [
     BrowserModule,

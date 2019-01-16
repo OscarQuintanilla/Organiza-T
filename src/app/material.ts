@@ -11,12 +11,15 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 @NgModule({
     imports: [MatButtonModule, MatCheckboxModule, MatInputModule, MatDividerModule, MatListModule, MatCardModule,
         MatToolbarModule, MatSidenavModule, MatMenuModule, MatIconModule, MatRadioModule, MatSelectModule],
     exports: [MatButtonModule, MatCheckboxModule, MatInputModule, MatDividerModule, MatListModule, MatCardModule,
-        MatToolbarModule, MatSidenavModule, MatMenuModule, MatIconModule, MatRadioModule, MatSelectModule]
+        MatToolbarModule, MatSidenavModule, MatMenuModule, MatIconModule, MatRadioModule, MatSelectModule, MatFormFieldModule,
+        MatSlideToggleModule, ]
 }) 
 export class MaterialModule { }

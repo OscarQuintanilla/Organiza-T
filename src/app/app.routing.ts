@@ -9,6 +9,7 @@ import { MateriasComponent } from './components/materias/materias.component';
 import { EvaluacionesComponent } from './components/evaluaciones/evaluaciones.component';
 import { GruposComponent } from './components/grupos/grupos.component';
 import { PlantillasComponent } from './plantillas/plantillas.component';
+import { FormTareasComponent } from './components/tareas/form-tareas/form-tareas.component';
 
 const appRoutes: Routes = [
     {path: '', component: InicioComponent},
@@ -19,6 +20,7 @@ const appRoutes: Routes = [
     {path: 'evaluaciones', component: EvaluacionesComponent},
     {path: 'grupos', component: GruposComponent},
     {path: 'plantillas', component: PlantillasComponent},
+    {path: 'tareas/agregar', component: FormTareasComponent},
 ];
 
 export const appRoutingProviders: any[] = [];
