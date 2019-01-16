@@ -1,14 +1,20 @@
-<mat-card class="contenedorTarjeta  ">
+<div style="display: flex; flex-direction: row" id="nav">
+  <button mat-raised-button color="warn" class="btnAgregar">Agregar Nueva Tarea</button>
+</div>
+
+
+
+<mat-card class="contenedorTarjeta" *ngFor="let tarea of tareas">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title> {{tarea.titular}} </mat-card-title>
-    <mat-card-subtitle> {{tarea.formatoPresentacion}} - {{tarea.tipo}} </mat-card-subtitle>
+    <mat-card-title> {{tarea.Titular}} </mat-card-title>
+    <mat-card-subtitle> {{tarea.FechaEntrega| date:"dd/MM/yy"}}</mat-card-subtitle>
+    <mat-card-subtitle> {{tarea.FormatoPresentacion}} - {{tarea.Tipo}} </mat-card-subtitle>
 
   </mat-card-header>
-  <!--img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"-->
   <mat-card-content>
     <p>
-      {{tarea.descripcion}}
+      {{tarea.Descripcion}}
     </p>
   </mat-card-content>
   <mat-card-actions class="card-actions">
@@ -18,10 +24,5 @@
     <button mat-button>
       <mat-icon class="mat-18">done</mat-icon>
     </button>
-  </mat-card-actions >  
+  </mat-card-actions>
 </mat-card>
-<!--
-  Shiba Inu
-  The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting.-->

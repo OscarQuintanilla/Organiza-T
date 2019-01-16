@@ -1,7 +1,8 @@
 .contenedorTarjeta {
-    max-width: 20%;
+    width: 20%;
     box-sizing: border-box;
-    margin: 5%;
+    margin: 2.5%;
+    float: left;
   }
 .example-header-image {
    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
@@ -9,4 +10,8 @@
 }
 .card-actions{
   margin-left: 0%;
+}
+.btnAgregar{
+  margin: 2.5% 0% 0% 2.5%;
+  float: left;
 }

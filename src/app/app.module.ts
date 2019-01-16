@@ -42,7 +42,7 @@ import { HttpClient } from 'selenium-webdriver/http';
     routing,
     HttpClientModule
   ],
-  providers: [ appRoutingProviders, TareasService ],
+  providers: [ appRoutingProviders, TareasService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
