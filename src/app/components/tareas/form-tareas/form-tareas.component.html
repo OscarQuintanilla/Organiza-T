@@ -7,7 +7,7 @@
             <input matInput required placeholder="Titulo de la Tarea" value="">
         </mat-form-field>
         <mat-form-field class="example-full-width">
-            <textarea matInput required placeholder="Descripción" rows="3"></textarea>
+            <textarea matInput required placeholder="Descripción" rows="3" maxlength="105"></textarea>
         </mat-form-field>
         <mat-form-field>
             <mat-select required placeholder="Tipo de tarea">
@@ -19,12 +19,18 @@
                 </mat-option>
             </mat-select>
         </mat-form-field>
-
+        <mat-form-field>
+            <input matInput [matDatepicker]="dp3" placeholder="Fecha de entrega de la tarea" disabled>
+            <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+            <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+          </mat-form-field>
     </mat-card>
+
     <mat-card id="previa">
         <mat-card-header>
             <mat-card-title>Title</mat-card-title>
             <mat-card-subtitle>Subtitle</mat-card-subtitle>
         </mat-card-header>
     </mat-card>
+
 </div>
