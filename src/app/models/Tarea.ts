@@ -5,6 +5,6 @@ export interface Tarea{
     Completada: boolean;
     Tipo: string;
     FormatoPresentacion: string;
-    FechaEntrega: Date;
+    FechaEntrega: any;
     idUsuario: string;
 }

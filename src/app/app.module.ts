@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
+//forms
+import { FormsModule } from "@angular/forms";
+
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 
@@ -42,7 +45,8 @@ import { FormTareasComponent } from './components/tareas/form-tareas/form-tareas
     BrowserAnimationsModule,
     MaterialModule,
     routing,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [ appRoutingProviders, TareasService],
   bootstrap: [AppComponent]

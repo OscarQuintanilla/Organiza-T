@@ -16,3 +16,7 @@ input{
     width: 20%;
     float: left;
 }
+.btnAgregar{
+    margin: 2.5% 0% 0% 10%;
+    float: left;
+}
