@@ -15,3 +15,7 @@
   margin: 2.5% 0% 0% 2.5%;
   float: left;
 }
+.imgMateria {
+  background-image: url('../../../assets/img/sinImagen.png');
+  background-size: cover;
+}

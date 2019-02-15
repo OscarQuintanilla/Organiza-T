@@ -7,4 +7,5 @@ export interface Tarea{
     FormatoPresentacion: string;
     FechaEntrega: any;
     idUsuario: string;
+    idMateria: string;
 }

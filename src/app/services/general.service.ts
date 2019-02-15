@@ -1,24 +1,24 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GeneralService {
 
+  API_URI = 'http://localhost:3000';
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   /**
    * 
-   * @param fecha Argumento en formato JS que intenta pasarse al formato MySQL.
+   * @param fecha Fecha en formato JS que intenta pasarse al formato MySQL.
    */
 
-  public convertirFecha(fecha: Date): string{
+  public convertirFecha(fecha: Date): string {
 
     var fechaStr = fecha.toString();
     var fechaMySQL: string = "";
-    var partes: string[];
-
     var fechaPartes: any = fechaStr.split(/[- :]/);
 
     switch (fechaPartes[1]) {
@@ -62,12 +62,19 @@ export class GeneralService {
       default:
         break;
     }
-
-    console.log(fechaStr);
     fechaMySQL = fechaPartes[3] + "-" + fechaPartes[1] + "-" + fechaPartes[2];
-
     return fechaMySQL;
   }
+
+  /**
+   * Genera los ID automáticamente, con el formato utilizado en la base de datos.
+   * @param tipoElemento String con el nombre del tipo de elemento al que se le desea generar 
+   * un ID automáticamente (evaluación, grupo, materia, perfil, tarea).
+   */
+  generarId(tipoElemento: string) {
+    return this.http.get(`${this.API_URI}/general/${tipoElemento}`);
+  }
+
 
 
 }

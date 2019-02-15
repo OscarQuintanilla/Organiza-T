@@ -20,3 +20,7 @@ input{
     margin: 2.5% 0% 0% 10%;
     float: left;
 }
+.imgAv{
+    background-image: url('../../../../assets/img/sinImagen.png');
+   background-size: cover;
+}

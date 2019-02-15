@@ -21,6 +21,7 @@ const appRoutes: Routes = [
     {path: 'grupos', component: GruposComponent},
     {path: 'plantillas', component: PlantillasComponent},
     {path: 'tareas/agregar', component: FormTareasComponent},
+    {path: 'tareas/editar/:id', component: FormTareasComponent},
 ];
 
 export const appRoutingProviders: any[] = [];
