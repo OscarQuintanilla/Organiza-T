@@ -1,5 +1,5 @@
 <div style="display: flex; flex-direction: row" id="nav">
-  <button mat-raised-button color="warn" class="btnAgregar" [routerLink]="['/tareas/']">Regresar</button>
+  <button mat-raised-button color="warn" class="btnAgregar" [routerLink]="['/materias/']">Regresar</button>
 </div>
 <div id="arts">
   <form>
@@ -11,26 +11,26 @@
     </mat-card-title>
     
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Nombre de la materia" #titular="ngModel" value="" [(ngModel)]="materia.nombre"
+      <input matInput placeholder="Nombre de la materia" #titular="ngModel" value="" [(ngModel)]="materia.Nombre"
         required autofocus>
     </mat-form-field>
-    <mat-radio-group [(ngModel)]="color">
+    <mat-radio-group [(ngModel)]="color" required> 
         <mat-radio-button class="colorMateria" value="rojo">Rojo</mat-radio-button>
         <mat-radio-button class="colorMateria" value="azul">Azul</mat-radio-button>
-        <mat-radio-button class="colorMateria" value="amaillo">Amarillo</mat-radio-button>
+        <mat-radio-button class="colorMateria" value="amarillo">Amarillo</mat-radio-button>
         <mat-radio-button class="colorMateria" value="verde">Verde</mat-radio-button>
       </mat-radio-group>
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Docente de la materia" #titular="ngModel" value="" [(ngModel)]="materia.docente"
+      <input matInput placeholder="Docente de la materia" #titular="ngModel" value="" [(ngModel)]="materia.Docente"
         required autofocus>
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select required placeholder="Tipo de materia" [(ngModel)]="materia.tipo">
-        <mat-option value="Impresa" selected>
+      <mat-select required placeholder="Tipo de materia" [(ngModel)]="materia.Tipo">
+        <mat-option value="Teorica" selected>
           Teórica
         </mat-option>
-        <mat-option value="Digital">
+        <mat-option value="Laboratorio">
           Laboratorio
         </mat-option>
       </mat-select>
@@ -46,9 +46,9 @@
 
   <mat-card id="previa">
     <mat-card-header>
-      <mat-card-title> {{materia.nombre == "" ? 'Nombre de la materia': materia.nombre}} </mat-card-title>
-      <mat-card-subtitle> {{materia.tipo}}</mat-card-subtitle>
-      <mat-card-subtitle> {{materia.docente == "" ? 'Digital/Escrita': materia.docente}}
+      <mat-card-title> {{materia.Nombre == "" ? 'Nombre de la materia': materia.Nombre}} </mat-card-title>
+      <mat-card-subtitle> {{materia.Tipo}}</mat-card-subtitle>
+      <mat-card-subtitle> {{materia.Docente == "" ? 'Digital/Escrita': materia.Docente}}
       </mat-card-subtitle>
     </mat-card-header>
     <img src="../../../../assets/img/letras/{{materia.url}} " class="imgMateria" alt="Imagen para la materia">

@@ -23,7 +23,6 @@ export class MateriasComponent implements OnInit {
     this.materiaService.obtenerListaMaterias().subscribe(
       res => {
         this.materias = res;
-        console.log(this.materias);
       },
       err => console.log('Error al listar materias.component: ' + err)
     );
@@ -31,10 +30,11 @@ export class MateriasComponent implements OnInit {
 
   
 
-  borrarMaterias(id: string) {
+  borrarMateria(id: string) {
     this.materiaService.eliminarMateria(id).subscribe(
       res => {
-        this.listarMaterias;
+        this.listarMaterias();
+        this.router.navigate(['/materias']);
       },
       err => console.log('Error al eliminar materia.component: ' + err)
     );

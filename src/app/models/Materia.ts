@@ -1,8 +1,8 @@
 export interface Materia{
     id: string; 
-    docente: string;
-    nombre: string;
-    tipo: string;
+    Docente: string;
+    Nombre: string;
+    Tipo: string;
     idUsuario: string;
     url: string;
 }

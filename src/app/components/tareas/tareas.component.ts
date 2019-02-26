@@ -52,11 +52,11 @@ export class TareasComponent implements OnInit {
   pintarImgMateria() {
     var i = 0;
     var avatares: any = [];
+    avatares = document.getElementsByClassName('imgMateria');
     this.tareas.forEach(tarea => {
       this.materias.forEach(materia => {
         if (tarea.idMateria == materia.id) {
-          tarea.ruta = materia.url;
-          avatares = document.getElementsByClassName('imgMateria');
+          tarea.ruta = materia.url;          
           avatares[i].style.backgroundImage = "url(../../../../assets/img/letras/" + tarea.ruta + ")";
         }        
       });

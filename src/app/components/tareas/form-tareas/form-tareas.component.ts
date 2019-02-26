@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Tarea } from 'src/app/models/Tarea';
 import { TareasService } from "../../../services/tareas.service";
+import { MateriasService } from "../../../services/materias.service";
 import { GeneralService } from "../../../services/general.service";
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -26,10 +27,13 @@ export class FormTareasComponent implements OnInit {
   identificador: any;
   editar: boolean = false;
 
+  materias: any = [];
+
   constructor(private tareaService: TareasService, private generalServices: GeneralService,
-    private router: Router, private activedRoute: ActivatedRoute) { }
+    private router: Router, private activedRoute: ActivatedRoute, private materiasServices: MateriasService) { }
 
   ngOnInit() {
+    this.listarMaterias();
     const params = this.activedRoute.snapshot.params;
     if (params.id) {
       this.tareaService.obtenerTareaPorId(params.id)
@@ -46,7 +50,6 @@ export class FormTareasComponent implements OnInit {
   }
 
   public guardarTarea() {
-    this.tarea.idMateria = "MA00000001";
     this.tarea.idUsuario = "MASTER";
     this.tarea.FechaEntrega = this.generalServices.convertirFecha(this.tarea.FechaEntrega);
     this.generalServices.generarId('tarea').subscribe(
@@ -60,6 +63,7 @@ export class FormTareasComponent implements OnInit {
             },
             err => console.error(err)
           );
+
         this.router.navigate(['/tareas']);
       },
       err => console.error(err)
@@ -75,6 +79,28 @@ export class FormTareasComponent implements OnInit {
       err => console.log(err)
     )
   }
+
+  listarMaterias() {
+    this.materiasServices.obtenerListaMaterias().subscribe(
+      res => {
+        this.materias = res;
+        this.pintarImgMateria();
+      },
+      error => console.log("Error: " + error)
+    );
+  }
+  pintarImgMateria() {
+    var i = 0;
+    var avatares: any = [];
+    avatares = document.getElementsByClassName('imgMateria');
+    console.log(avatares[0]);
+    this.materias.forEach(materia => {
+      if (this.tarea.idMateria == materia.id) {        
+        console.log("1 " + materia.ruta);
+        avatares[i].style.backgroundImage = "url(../../../../../assets/img/letras/" + materia.ruta + ")";
+      }else if(this.tarea.idMateria == "" || this.tarea.idMateria == undefined){
+        avatares[i].style.backgroundImage = "url(../../../../../assets/img/letras/sinImagen.png)";
+      }
+    });
+  }
 }
-
-

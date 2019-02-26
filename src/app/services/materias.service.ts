@@ -17,19 +17,19 @@ export class MateriasService {
   }
 
   obtenerMateriaPorId(id: string){
-    return this.http.get(`${this.API_URI}/materia/${id}`);
+    return this.http.get(`${this.API_URI}/materias/${id}`);
   }
 
   agregarMateria(materia: Materia){
-    return this.http.post(`${this.API_URI}/materia`, materia);
+    return this.http.post(`${this.API_URI}/materias`, materia);
   }
 
   actualizarMateria(materia: Materia){
-    return this.http.put(`${this.API_URI}/materia`, materia);
+    return this.http.put(`${this.API_URI}/materias/${materia.id}`, materia);
   }
 
   eliminarMateria(id: string){
-    return this.http.delete(`${this.API_URI}/materia/${id}`);
+    return this.http.delete(`${this.API_URI}/materias/${id}`);
   }
 
 }

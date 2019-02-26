@@ -1,13 +1,11 @@
 <div style="display: flex; flex-direction: row" id="nav">
-  <button mat-raised-button color="accent" class="btnAgregar" [routerLink]="['/tareas/agregar']">Agregar Nueva
-    Tarea</button>
+  <button mat-raised-button color="accent" class="btnAgregar" [routerLink]="['/tareas/agregar']">
+    Agregar Nueva Tarea
+  </button>
 </div>
-
 <mat-card class="contenedorTarjeta" *ngFor="let tarea of tareas">
   <mat-card-header>
-    <div mat-card-avatar class="imgMateria" id="avatar" >
-    </div>
-
+    <div mat-card-avatar class="imgMateria" id="avatar"></div>
     <mat-card-title> {{tarea.Titular}} </mat-card-title>
     <mat-card-subtitle> {{tarea.FechaEntrega| date:"dd/MM/yy"}}</mat-card-subtitle>
     <mat-card-subtitle> {{tarea.FormatoPresentacion}} - {{tarea.Tipo}} </mat-card-subtitle>

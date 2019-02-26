@@ -2,22 +2,31 @@
     <button mat-raised-button color="warn" class="btnAgregar" [routerLink]="['/tareas/']">Regresar</button>
 </div>
 <div id="arts">
-    <form >
-        
+    <form>
+
     </form>
     <mat-card id="form">
         <mat-card-title>
             Tarea
         </mat-card-title>
-        <mat-form-field class="example-full-width">
-            <input matInput  placeholder="Titulo de la Tarea" #titular="ngModel" value="" [(ngModel)]="tarea.Titular" required autofocus>
+        <mat-form-field>
+            <mat-select placeholder="Materia" [(ngModel)]="tarea.idMateria">
+                <mat-option *ngFor="let materia of materias" [value]="materia.id">
+                    {{materia.Nombre}} ({{materia.Tipo}})
+                </mat-option>
+            </mat-select>
         </mat-form-field>
         <mat-form-field class="example-full-width">
-            <textarea matInput required placeholder="Descripción" rows="3" maxlength="512" #descripcion="ngModel" [(ngModel)]="tarea.Descripcion"></textarea>
+            <input matInput placeholder="Titulo de la Tarea" #titular="ngModel" value="" [(ngModel)]="tarea.Titular"
+                required autofocus>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <textarea matInput required placeholder="Descripción" rows="3" maxlength="512" #descripcion="ngModel"
+                [(ngModel)]="tarea.Descripcion"></textarea>
         </mat-form-field>
         <mat-form-field>
             <mat-select required placeholder="Formato de tarea" [(ngModel)]="tarea.FormatoPresentacion">
-                <mat-option value="Impresa" selected >
+                <mat-option value="Impresa" selected>
                     Impresa/Escrita
                 </mat-option>
                 <mat-option value="Digital">
@@ -36,23 +45,24 @@
             </mat-select>
         </mat-form-field>
         <mat-form-field>
-            <input matInput required [matDatepicker]="dp3" placeholder="Fecha de entrega de la tarea" [(ngModel)]="tarea.FechaEntrega"
-                disabled>
+            <input matInput required [matDatepicker]="dp3" placeholder="Fecha de entrega de la tarea"
+                [(ngModel)]="tarea.FechaEntrega" disabled>
             <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
             <mat-datepicker #dp3 disabled="false"></mat-datepicker>
         </mat-form-field>
 
         <div style="display: flex; flex-direction: row" id="nav">
-            <button mat-raised-button  color="accent" (click)="editar ? modificarTarea() : guardarTarea()" [disabled]="" >Guadar</button>
+            <button mat-raised-button color="accent" (click)="editar ? modificarTarea() : guardarTarea()"
+                [disabled]="">Guadar</button>
         </div>
     </mat-card>
 
     <mat-card id="previa">
         <mat-card-header>
-            <div mat-card-avatar class="imgAv"></div>
+            <div mat-card-avatar class="imgMateria"></div>
             <mat-card-title> {{tarea.Titular == "" ? 'Titulo de la Tarea': tarea.Titular}} </mat-card-title>
             <mat-card-subtitle> {{tarea.FechaEntrega| date:"dd/MM/yy"}}</mat-card-subtitle>
-            <mat-card-subtitle> {{tarea.FormatoPresentacion == "" ? 'Digital/Escrita': tarea.FormatoPresentacion}} 
+            <mat-card-subtitle> {{tarea.FormatoPresentacion == "" ? 'Digital/Escrita': tarea.FormatoPresentacion}}
                 - {{tarea.Tipo == "" ? 'Individual/Grupal': tarea.Tipo}} </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
@@ -64,7 +74,7 @@
             <button mat-button>
                 <mat-icon class="mat-18">edit</mat-icon>
             </button>
-            <button mat-button  >
+            <button mat-button>
                 <mat-icon class="mat-18">done</mat-icon>
             </button>
         </mat-card-actions>

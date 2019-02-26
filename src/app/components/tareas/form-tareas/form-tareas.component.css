@@ -24,3 +24,6 @@ input{
     background-image: url('../../../../assets/img/sinImagen.png');
    background-size: cover;
 }
+.imgMateria {
+    background-size: cover;
+  }
