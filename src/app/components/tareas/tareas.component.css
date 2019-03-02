@@ -1,24 +1,19 @@
 .contenedorTarjeta {
-    width: 20%;
-    box-sizing: border-box;
-    margin: 2.5%;
-    float: left;
-  }
-.example-header-image {
-   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-   background-size: cover;
+  max-width: 20%;
+  box-sizing: border-box;
+  margin: 2.5%;
+  float: left;
 }
-.card-actions{
+
+.card-actions {
   margin-left: 0%;
 }
-.btnAgregar{
+
+.btnAgregar {
   margin: 2.5% 0% 0% 2.5%;
   float: left;
 }
+
 .imgMateria {
-  /*background-image: url('../../../assets/img/sinImagen.png');*/
   background-size: cover;
-}
-#avatar{
-  /*background-image: url('../../../assets/img/letras/sinImagen.png');*/
 }

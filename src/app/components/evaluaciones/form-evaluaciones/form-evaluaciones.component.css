@@ -1,0 +1,29 @@
+mat-form-field{
+    width: 100%;
+}
+input{
+    text-decoration: none;
+    width: 80%;
+}
+#form{
+    margin: 2.5% 10%;
+    width: 40%;
+    float: left;
+}
+#previa{
+    box-sizing: border-box;
+    margin: 2.5% ;
+    width: 20%;
+    float: left;
+}
+.btnAgregar{
+    margin: 2.5% 0% 0% 10%;
+    float: left;
+}
+.imgAv{
+    background-image: url('../../../../assets/img/sinImagen.png');
+   background-size: cover;
+}
+.imgMateria {
+    background-size: cover;
+  }

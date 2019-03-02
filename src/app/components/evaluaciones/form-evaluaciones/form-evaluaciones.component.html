@@ -1,0 +1,82 @@
+<div style="display: flex; flex-direction: row" id="nav">
+  <button mat-raised-button color="warn" class="btnAgregar" [routerLink]="['/evaluaciones/']">Regresar</button>
+</div>
+<div id="arts">
+  <form>
+  </form>
+  <mat-card id="form">
+      <mat-card-title>
+          Evaluación
+      </mat-card-title>
+      <mat-form-field>
+          <mat-select placeholder="Materia" [(ngModel)]="evaluacion.idMateria">
+              <mat-option *ngFor="let materia of materias" [value]="materia.id">
+                  {{materia.Nombre}} ({{materia.Tipo}})
+              </mat-option>
+          </mat-select>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="Nombre de la Evaluación" #titular="ngModel" value="" [(ngModel)]="evaluacion.NombreEvaluacion"
+              required autofocus>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+          <textarea matInput required placeholder="Temas" rows="3" maxlength="512" #descripcion="ngModel"
+              [(ngModel)]="evaluacion.Temas"></textarea>
+      </mat-form-field>
+      <mat-form-field>
+          <mat-select required placeholder="Formato de tarea" [(ngModel)]="evaluacion.Formato">
+              <mat-option value="Presencial" selected>
+                  Presencial
+              </mat-option>
+              <mat-option value="En línea">
+                  En línea
+              </mat-option>
+          </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+          <mat-select required placeholder="Tipo de tarea" [(ngModel)]="evaluacion.TipoEvaluacion">
+              <mat-option value="Individual">
+                  Individual
+              </mat-option>
+              <mat-option value="Grupal">
+                  Grupal
+              </mat-option>
+          </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+          <input matInput required [matDatepicker]="dp3" placeholder="Fecha de entrega de la tarea"
+              [(ngModel)]="evaluacion.Fecha" disabled>
+          <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+          <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+      </mat-form-field>
+
+      <div style="display: flex; flex-direction: row" id="nav">
+          <button mat-raised-button color="accent" (click)="editar ? modificarEvaluacion() : guardarEvaluacion()"
+              [disabled]="">Guadar</button>
+      </div>
+  </mat-card>
+
+  <mat-card id="previa">
+      <mat-card-header>
+          <div mat-card-avatar class="imgMateria"></div>
+          <mat-card-title> {{evaluacion.NombreEvaluacion == "" ? 'Nombre de la Evaluación': evaluacion.NombreEvaluacion}} </mat-card-title>
+          <mat-card-subtitle> {{evaluacion.Fecha| date:"dd/MM/yy"}}</mat-card-subtitle>
+          <mat-card-subtitle> {{evaluacion.FormatoPresentacion == "" ? 'Presencial/En línea': evaluacion.Formato}}
+              - {{evaluacion.Tipo == "" ? 'Individual/Grupal': evaluacion.TipoEvaluacion}} </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+          <p>
+              {{evaluacion.Temas == "" ? 'Escribe la lista de contenidos que se evaluarán.': evaluacion.Temas}}
+          </p>
+      </mat-card-content>
+      <mat-card-actions class="card-actions">
+          <button mat-button>
+              <mat-icon class="mat-18">edit</mat-icon>
+          </button>
+          <button mat-button>
+              <mat-icon class="mat-18">done</mat-icon>
+          </button>
+      </mat-card-actions>
+  </mat-card>
+
+</div>

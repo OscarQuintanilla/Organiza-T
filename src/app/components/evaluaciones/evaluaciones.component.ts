@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { EvaluacionesService } from "../../services/evaluaciones.service";
+import { MateriasService } from 'src/app/services/materias.service';
 
 @Component({
   selector: 'app-evaluaciones',
@@ -7,9 +9,52 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EvaluacionesComponent implements OnInit {
 
-  constructor() { }
+  evaluaciones: any = [];
+  materias: any = [];
+
+  constructor(private evaluacionesService: EvaluacionesService, private materiasServices: MateriasService) { }
 
   ngOnInit() {
+    this.listarEvaluaciones();
+    this.listarMaterias();
+  }
+
+  listarEvaluaciones() {
+    this.evaluacionesService.obtenerListaEvaluaciones().subscribe(
+      res => {
+        this.evaluaciones = res;
+      }
+    )
+  }
+  eliminarEvaluacion(id: string) {
+    this.evaluacionesService.eliminarEvaluacion(id).subscribe(
+      res => {
+        this.listarEvaluaciones();
+      }
+    )
+  }
+  listarMaterias() {
+    this.materiasServices.obtenerListaMaterias().subscribe(
+      res => {
+        this.materias = res;
+        this.pintarImgMateria();
+      },
+      error => console.log("Error: " + error)
+    );
+  }
+  pintarImgMateria() {
+    var i = 0;
+    var avatares: any = [];
+    avatares = document.getElementsByClassName('imgMateria');
+    this.evaluaciones.forEach(evaluacion => {
+      this.materias.forEach(materia => {
+        if (evaluacion.idMateria == materia.id) {
+          evaluacion.ruta = materia.url;
+          avatares[i].style.backgroundImage = "url(../../../../assets/img/letras/" + evaluacion.ruta + ")";
+        }
+      });
+      i++;
+    });
   }
 
 }

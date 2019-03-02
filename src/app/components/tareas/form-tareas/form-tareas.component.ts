@@ -39,7 +39,6 @@ export class FormTareasComponent implements OnInit {
       this.tareaService.obtenerTareaPorId(params.id)
         .subscribe(
           res => {
-            console.log(res);
             this.tarea = res[0];
           },
           err => console.error(err)
