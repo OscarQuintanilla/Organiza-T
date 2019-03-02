@@ -94,8 +94,7 @@ export class FormTareasComponent implements OnInit {
     avatares = document.getElementsByClassName('imgMateria');
     console.log(avatares[0]);
     this.materias.forEach(materia => {
-      if (this.tarea.idMateria == materia.id) {        
-        console.log("1 " + materia.ruta);
+      if (this.tarea.idMateria == materia.id) { 
         avatares[i].style.backgroundImage = "url(../../../../../assets/img/letras/" + materia.ruta + ")";
       }else if(this.tarea.idMateria == "" || this.tarea.idMateria == undefined){
         avatares[i].style.backgroundImage = "url(../../../../../assets/img/letras/sinImagen.png)";
