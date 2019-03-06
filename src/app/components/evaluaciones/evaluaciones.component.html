@@ -6,8 +6,8 @@
 <mat-card class="contenedorTarjeta" *ngFor="let evaluacion of evaluaciones">
   <mat-card-header>
       <div mat-card-avatar class="imgMateria" id="avatar"></div>
-    <mat-card-title> {{evaluacion.NombreEvaluacion}} </mat-card-title>
-    <mat-card-subtitle> {{evaluacion.Formato}} </mat-card-subtitle>
+    <mat-card-title class="materia"> {{evaluacion.NombreEvaluacion}} </mat-card-title>
+    <mat-card-subtitle> {{evaluacion.Materia}} - {{evaluacion.Formato}} </mat-card-subtitle>
     <mat-card-subtitle> {{evaluacion.Fecha| date:"dd/MM/yy"}} </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>

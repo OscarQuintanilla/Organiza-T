@@ -12,7 +12,8 @@ export class EvaluacionesComponent implements OnInit {
   evaluaciones: any = [];
   materias: any = [];
 
-  constructor(private evaluacionesService: EvaluacionesService, private materiasServices: MateriasService) { }
+  constructor(private evaluacionesService: EvaluacionesService, private materiasServices: MateriasService) { 
+  }
 
   ngOnInit() {
     this.listarEvaluaciones();
@@ -45,11 +46,14 @@ export class EvaluacionesComponent implements OnInit {
   pintarImgMateria() {
     var i = 0;
     var avatares: any = [];
+    var nombreMateria: any = [];
     avatares = document.getElementsByClassName('imgMateria');
+    nombreMateria = document.getElementsByClassName('materia');
     this.evaluaciones.forEach(evaluacion => {
       this.materias.forEach(materia => {
         if (evaluacion.idMateria == materia.id) {
           evaluacion.ruta = materia.url;
+          this.evaluaciones[i].Materia = materia.Nombre;
           avatares[i].style.backgroundImage = "url(../../../../assets/img/letras/" + evaluacion.ruta + ")";
         }
       });
