@@ -50,7 +50,7 @@ export class FormTareasComponent implements OnInit {
 
   public guardarTarea() {
     this.tarea.idUsuario = "MASTER";
-    this.tarea.FechaEntrega = this.generalServices.convertirFecha(this.tarea.FechaEntrega);
+    this.tarea.FechaEntrega = this.generalServices.convertirFechaParaMSQL(this.tarea.FechaEntrega);
     this.generalServices.generarId('tarea').subscribe(
       res => {
         this.identificador = res;
@@ -70,7 +70,7 @@ export class FormTareasComponent implements OnInit {
   }
 
   public modificarTarea() {
-    this.tarea.FechaEntrega = this.generalServices.convertirFecha(this.tarea.FechaEntrega);
+    this.tarea.FechaEntrega = this.generalServices.convertirFechaParaMSQL(this.tarea.FechaEntrega);
     this.tareaService.actualizarTarea(this.tarea.id, this.tarea).subscribe(
       res => {
         this.router.navigate(['/tareas']);

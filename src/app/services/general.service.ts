@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +16,7 @@ export class GeneralService {
    * @param fecha Fecha en formato JS que intenta pasarse al formato MySQL.
    */
 
-  public convertirFecha(fecha: Date): string {
+  public convertirFechaParaMSQL(fecha: Date): string {
 
     var fechaStr = fecha.toString();
     var fechaMySQL: string = "";
@@ -64,6 +65,14 @@ export class GeneralService {
     }
     fechaMySQL = fechaPartes[3] + "-" + fechaPartes[1] + "-" + fechaPartes[2];
     return fechaMySQL;
+  }
+
+  public convertirFechaParaJS(fechaMySQL: string) {
+    var fechaPartes: any = fechaMySQL.split(/[-]/);
+    var stringJS = fechaPartes[2] + "/" + fechaPartes[1] + "/" + fechaPartes[0];
+    var fechaJs: Date = new Date(stringJS);
+
+    return fechaJs;
   }
 
   /**

@@ -1,0 +1,23 @@
+section {
+    margin: auto;
+    width: 80%;
+}
+.contenedorTarjeta {
+    width: 20%;
+    box-sizing: border-box;
+    margin: 2.5%;
+    float: left;
+  }
+  
+  .card-actions {
+    margin-left: 0%;
+  }
+  
+  .btnAgregar {
+    margin: 2.5% 0% 0% 2.5%;
+    float: left;
+  }
+  
+  .imgMateria {
+    background-size: cover;
+  }

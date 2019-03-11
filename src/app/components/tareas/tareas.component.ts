@@ -56,7 +56,8 @@ export class TareasComponent implements OnInit {
     this.tareas.forEach(tarea => {
       this.materias.forEach(materia => {
         if (tarea.idMateria == materia.id) {
-          tarea.ruta = materia.url;          
+          tarea.ruta = materia.url;
+          this.tareas[i].Materia = materia.Nombre;          
           avatares[i].style.backgroundImage = "url(../../../../assets/img/letras/" + tarea.ruta + ")";
         }        
       });

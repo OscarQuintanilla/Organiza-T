@@ -28,6 +28,7 @@ import { HttpClient } from 'selenium-webdriver/http';
 import { FormTareasComponent } from './components/tareas/form-tareas/form-tareas.component';
 import { FormMateriasComponent } from './components/materias/form-materias/form-materias.component';
 import { FormEvaluacionesComponent } from './components/evaluaciones/form-evaluaciones/form-evaluaciones.component';
+import { FormGruposComponent } from './components/grupos/form-grupos/form-grupos.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { FormEvaluacionesComponent } from './components/evaluaciones/form-evalua
     FormTareasComponent,
     FormMateriasComponent,
     FormEvaluacionesComponent,
+    FormGruposComponent,
   ],
   imports: [
     BrowserModule,

@@ -47,7 +47,7 @@ export class FormEvaluacionesComponent implements OnInit {
       res => {
         this.identificador = res;
         this.evaluacion.id = this.identificador.id;
-        this.evaluacion.Fecha = this.generalService.convertirFecha(this.evaluacion.Fecha);
+        this.evaluacion.Fecha = this.generalService.convertirFechaParaMSQL(this.evaluacion.Fecha);
         this.evaluacion.idUsuario = 'MASTER';
         console.log(this.evaluacion.id)
         this.evaluacionesService.crearEvaluacion(this.evaluacion).subscribe(
@@ -63,7 +63,7 @@ export class FormEvaluacionesComponent implements OnInit {
   }
 
   modificarEvaluacion() {
-    this.evaluacion.Fecha = this.generalService.convertirFecha(this.evaluacion.Fecha);
+    this.evaluacion.Fecha = this.generalService.convertirFechaParaMSQL(this.evaluacion.Fecha);
     this.evaluacionesService.modificarEvaluacion(this.evaluacion.id, this.evaluacion).subscribe(
       res => {
         console.log(res);

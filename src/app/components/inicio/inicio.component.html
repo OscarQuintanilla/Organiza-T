@@ -1,3 +1,50 @@
-<p>
-  inicio works!
-</p>
+<section>
+  <h3>Tareas próximas</h3>
+  <mat-divider mat-inset></mat-divider>
+  <mat-card class="contenedorTarjeta" *ngFor="let tarea of tareasSemana">
+    <mat-card-header>
+      <div mat-card-avatar class="imgMateria" id="avatar"></div>
+      <mat-card-title> {{tarea.Titular}} </mat-card-title>
+      <mat-card-subtitle> {{tarea.Materia}} - {{tarea.FechaEntrega| date:"dd/MM/yy"}}</mat-card-subtitle>
+      <mat-card-subtitle> {{tarea.FormatoPresentacion}} - {{tarea.Tipo}} </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        {{tarea.Descripcion}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions class="card-actions">
+      <button mat-button [routerLink]="['/tareas/editar/', tarea.id]" alt="Editar">
+        <mat-icon class="mat-18">edit</mat-icon>
+      </button>
+      <button mat-button (click)="borrarTarea(tarea.id)" alt="Terminar">
+        <mat-icon class="mat-18">done</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</section>
+<section>
+  <h3>Evaluaciones próximas</h3>
+  <mat-divider mat-inset></mat-divider>
+  <mat-card class="contenedorTarjeta" *ngFor="let evaluacion of evaluacionesSemana">
+    <mat-card-header>
+      <div mat-card-avatar class="imgMateria" id="avatar"></div>
+      <mat-card-title class="materia"> {{evaluacion.NombreEvaluacion}} </mat-card-title>
+      <mat-card-subtitle> {{evaluacion.Materia}} - {{evaluacion.Formato}} </mat-card-subtitle>
+      <mat-card-subtitle> {{evaluacion.Fecha| date:"dd/MM/yy"}} </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        {{evaluacion.Temas}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions class="card-actions">
+      <button mat-button [routerLink]="['/evaluaciones/editar/', evaluacion.id]" alt="Editar">
+        <mat-icon class="mat-18">edit</mat-icon>
+      </button>
+      <button mat-button (click)="eliminarEvaluacion(evaluacion.id)" alt="Terminar">
+        <mat-icon class="mat-18">done</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</section>

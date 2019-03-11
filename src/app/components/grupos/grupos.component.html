@@ -1,23 +1,23 @@
-<mat-card class="contenedorTarjeta  ">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title> Nombre Materia </mat-card-title>
-      <mat-card-subtitle> Propósito del Grupo - Tipo Grupo </mat-card-subtitle>
-  
-    </mat-card-header>
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-    <mat-card-content>
-      <h3>Miembros</h3>
-      <ul>
-        <li>Miembro 1</li>
-      </ul>
-    </mat-card-content>
-    <mat-card-actions class="card-actions">
-      <button mat-button>
-        <mat-icon class="mat-18">edit</mat-icon>
-      </button>
-      <button mat-button>
-        <mat-icon class="mat-18">delete</mat-icon>
-      </button>
-    </mat-card-actions >  
-  </mat-card>
+<div style="display: flex; flex-direction: row" id="nav">
+  <button mat-raised-button color="accent" class="btnAgregar" [routerLink]="['/grupos/agregar']">
+    Agregar Nuevo Grupo
+  </button>
+</div>
+<mat-card class="contenedorTarjeta" *ngFor="let grupo of grupos">
+  <mat-card-header>
+    <div mat-card-avatar class="imgMateria"></div>
+    <mat-card-title> {{grupo.Materia}} </mat-card-title>
+    <mat-card-subtitle> {{grupo.descripcion}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    {{grupo.miembros}}
+  </mat-card-content>
+  <mat-card-actions class="card-actions">
+    <button mat-button [routerLink]="['/grupos/editar/', grupo.id]" alt="Editar">
+      <mat-icon class="mat-18">edit</mat-icon>
+    </button>
+    <button mat-button (click)="eliminarGrupo(grupo.id)" alt="Terminar">
+      <mat-icon class="mat-18">done</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
