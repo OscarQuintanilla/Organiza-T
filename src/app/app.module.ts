@@ -29,6 +29,7 @@ import { FormTareasComponent } from './components/tareas/form-tareas/form-tareas
 import { FormMateriasComponent } from './components/materias/form-materias/form-materias.component';
 import { FormEvaluacionesComponent } from './components/evaluaciones/form-evaluaciones/form-evaluaciones.component';
 import { FormGruposComponent } from './components/grupos/form-grupos/form-grupos.component';
+import { SesionComponent } from './sesion/sesion.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { FormGruposComponent } from './components/grupos/form-grupos/form-grupos
     FormMateriasComponent,
     FormEvaluacionesComponent,
     FormGruposComponent,
+    SesionComponent,
   ],
   imports: [
     BrowserModule,
