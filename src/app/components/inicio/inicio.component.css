@@ -1,23 +1,68 @@
-section {
-    margin: auto;
-    width: 80%;
-}
-.contenedorTarjeta {
+@media screen and (min-width: 1366px) {
+  section {
+    margin: 0% 5%;
+    width: 90%;
+  }
+  .contenedorTarjeta {
     width: 20%;
-    box-sizing: border-box;
     margin: 2.5%;
     float: left;
+    position: relative;
   }
-  
   .card-actions {
     margin-left: 0%;
   }
-  
   .btnAgregar {
     margin: 2.5% 0% 0% 2.5%;
     float: left;
   }
-  
   .imgMateria {
     background-size: cover;
   }
+}
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+  section {
+    margin: 0% 5%;
+    width: 90%;
+  }
+  .contenedorTarjeta {
+    width: 45%;
+    box-sizing: border-box;
+    margin: 2.5%;
+    float: left;
+  }
+  .card-actions {
+    margin-left: 0%;
+  }
+  .btnAgregar {
+    margin: 2.5% 0% 0% 2.5%;
+    float: left;
+  }
+  .imgMateria {
+    background-size: cover;
+  }
+}
+@media screen and (max-width: 900px){
+  section {
+    float: left;
+    margin: 0% 5%;
+    width: 90%;
+    font-size: 175%;
+  }
+  .contenedorTarjeta {
+    width: 95%;
+    box-sizing: border-box;
+    margin: 2.5%;
+    float: left;
+  }
+  .card-actions {
+    margin-left: 0%;
+  }
+  .btnAgregar {
+    margin: 2.5% 0% 0% 2.5%;
+    float: left;
+  }
+  .imgMateria {
+    background-size: cover;
+  }
+}

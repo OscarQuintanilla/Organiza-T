@@ -15,6 +15,7 @@ export class InicioComponent implements OnInit {
   evaluaciones: any = [];
   evaluacionesSemana: any = [];
   materias: any = [];
+  agendaSemana: any = [];
   hoy: Date = new Date();
 
   constructor(
@@ -25,6 +26,21 @@ export class InicioComponent implements OnInit {
 
   ngOnInit() {
     this.obtenerAgendaSemanal();
+  }
+  borrarTarea(id: string) {
+    this.tareasService.eliminarTarea(id).subscribe(
+      res => {
+        this.obtenerAgendaSemanal();
+      },
+      error => console.log(error)
+    );
+  }
+  eliminarEvaluacion(id: string) {
+    this.evaluacionesService.eliminarEvaluacion(id).subscribe(
+      res => {
+        this.obtenerAgendaSemanal();
+      }
+    )
   }
 
   obtenerAgendaSemanal() {
@@ -38,7 +54,7 @@ export class InicioComponent implements OnInit {
             if (fecha.getMonth() - hoy.getMonth() == 0) {
               if (fecha.getDate() - hoy.getDate() < 8 && fecha.getDate() - hoy.getDate() >= 0) {
                 this.tareasSemana[i] = this.tareas[i];
-                this.listarMaterias();
+                this.agendaSemana.push(this.tareas[i]);
               }
             }
           }
@@ -56,7 +72,7 @@ export class InicioComponent implements OnInit {
             if (fecha.getMonth() - hoy.getMonth() == 0) {
               if (fecha.getDate() - hoy.getDate() < 8 && fecha.getDate() - hoy.getDate() >= 0) {
                 this.evaluacionesSemana[i] = this.evaluaciones[i];
-                this.listarMaterias();
+                this.agendaSemana.push(this.evaluaciones[i]);
               }
             }
           }
@@ -64,48 +80,28 @@ export class InicioComponent implements OnInit {
       },
       error => console.error(error)
     );
+    this.listarMaterias();
   }
 
   listarMaterias() {
     this.materiasServices.obtenerListaMaterias().subscribe(
       res => {
         this.materias = res;
-        this.pintarImgMateriaTarea();
-        this.pintarImgMateriaEvaluacion();
+        var i = 0;
+        var avatares: any = document.getElementsByClassName('imgMateria');
+        this.agendaSemana.forEach(evento => {
+          this.materias.forEach(materia => {
+            if (evento.idMateria == materia.id) {
+              evento.ruta = materia.url;
+              evento.Materia = materia.Nombre;
+              avatares[i].style.backgroundImage = "url(../../../../assets/img/letras/" + evento.ruta + ")";
+            }
+          });
+          i++;
+        });
+
       },
       error => console.log("Error: " + error)
     );
-  }
-  pintarImgMateriaTarea() {
-    var i = 0;
-    var avatares: any = [];
-    avatares = document.getElementsByClassName('imgMateria');
-    this.tareasSemana.forEach(tarea => {
-      this.materias.forEach(materia => {
-        if (tarea.idMateria == materia.id) {
-          tarea.ruta = materia.url;
-          this.tareasSemana[i].Materia = materia.Nombre;
-          avatares[i].style.backgroundImage = "url(../../../../assets/img/letras/" + tarea.ruta + ")";
-        }
-      });
-      i++;
-    });
-  }
-  pintarImgMateriaEvaluacion() {
-    var i = 0;
-    var avatares: any = [];
-    var nombreMateria: any = [];
-    avatares = document.getElementsByClassName('imgMateria');
-    nombreMateria = document.getElementsByClassName('materia');
-    this.evaluaciones.forEach(evaluacion => {
-      this.materias.forEach(materia => {
-        if (evaluacion.idMateria == materia.id) {
-          evaluacion.ruta = materia.url;
-          this.evaluaciones[i].Materia = materia.Nombre;
-          avatares[i].style.backgroundImage = "url(../../../../assets/img/letras/" + evaluacion.ruta + ")";
-        }
-      });
-      i++;
-    });
   }
 }
