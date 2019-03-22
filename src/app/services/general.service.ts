@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -9,7 +10,7 @@ export class GeneralService {
 
   API_URI = 'http://localhost:3000';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   /**
    * 
@@ -84,6 +85,11 @@ export class GeneralService {
     return this.http.get(`${this.API_URI}/general/${tipoElemento}`);
   }
 
+  validarSesion(){
+    if (localStorage.getItem("idUsuario") == null) {
+      this.router.navigate(['/sesion']);
+    }
+  }
 
 
 }

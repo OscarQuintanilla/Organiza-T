@@ -1,3 +1,26 @@
-<p>
-  <a mat-button [routerLink] = " ['/'] " >Ir al Nav</a>
-</p>
+<section>
+  <span class="titulo">OrganizaT</span>
+  <mat-divider mat-inset></mat-divider>
+  <ul>
+    <li *ngIf="correo.touched && !correo.valid" class="error">Ingrese su correo o nombre de usuario.</li>
+    <li *ngIf="clave.touched && !clave.valid && clave == ''" class="error">Ingrese su clave.</li>
+  </ul>
+  <form action="">
+    <mat-form-field>
+      <input matInput placeholder="Correo / Nombre de Usuario" [(ngModel)]="usuario.correo" name="correo"
+        #correo="ngModel" autofocus required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Clave" [(ngModel)]="usuario.clave" name="clave" #clave="ngModel" required>
+    </mat-form-field>
+    <div>
+      <button mat-flat-button color="primary" [disabled]="!correo.valid && !clave.valid" >Iniciar Sesión</button>
+    </div>
+    <div class="enviar">
+      <span class="subtexto">¿No tienes cuenta? Regístrate...</span>
+    </div>
+
+
+  </form>
+
+</section>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { GeneralService } from '../services/general.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,17 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() {
-
-    let funcionalidades = ["Grupos", "Materias"];
-
-  }
-
-
+  constructor(private router: Router, private generalService: GeneralService) {}
 
   ngOnInit() {
-    
-      
+    this.generalService.validarSesion();
+     var sesionIniciada = true;
+
 
   }
 

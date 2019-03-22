@@ -1,0 +1,47 @@
+section {
+    text-align: center;
+    margin: 10% auto;
+    width: 40%;
+}
+
+form {
+    text-align: left;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 5% 0%;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+div {
+    margin: 2%;
+    text-align: center;
+}
+
+input {
+    margin: 1% 0%;
+}
+
+li {
+    position: relative;
+    clear: left;
+    margin: 5%;
+}
+
+.titulo {
+    font-size: 500%;
+    margin: 10% auto;
+}
+
+.subtexto {
+    font-weight: lighter;
+    font-size: 130%;
+}
+
+.error {
+    float: left;
+    margin: 0%;
+    color: red;
+}

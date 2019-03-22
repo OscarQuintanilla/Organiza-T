@@ -1,11 +1,12 @@
 /*@import "~@angular/material/prebuilt-themes/purple-green.css";*/
 
-html, body{
+html, body {
     height: 100%;
     margin: 0%;
-}
-@font-face{
-    src: url("assets/fonts/coolvetica.ttf");
     font-family: "Coolvetica";
 }
 
+@font-face {
+    src: url("assets/fonts/coolvetica.ttf");
+    font-family: "Coolvetica";
+}

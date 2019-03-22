@@ -28,8 +28,8 @@
   </mat-drawer>
   <mat-drawer-content>
     <!-- Contenido de la toolbar -->
-    <mat-toolbar>
-      <button mat-icon-button (click)="drawer.toggle()">
+    <mat-toolbar >
+      <button mat-icon-button (click)="drawer.toggle()" *ngIf = "sesionIniciada" >
         <mat-icon>menu</mat-icon>
       </button>
       <span>OrganizaT</span>
