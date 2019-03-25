@@ -1,3 +1,7 @@
+a {
+    color: inherit;
+}
+
 section {
     text-align: center;
     margin: 10% auto;
@@ -38,6 +42,7 @@ li {
 .subtexto {
     font-weight: lighter;
     font-size: 130%;
+    text-decoration: underline;
 }
 
 .error {

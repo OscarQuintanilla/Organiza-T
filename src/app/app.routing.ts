@@ -14,6 +14,7 @@ import { FormMateriasComponent } from "./components/materias/form-materias/form-
 import { FormEvaluacionesComponent } from "./components/evaluaciones/form-evaluaciones/form-evaluaciones.component";
 import { FormGruposComponent } from "./components/grupos/form-grupos/form-grupos.component";
 import { SesionComponent } from "./sesion/sesion.component";
+import { RegistroComponent } from './sesion/registro/registro.component';
 
 const appRoutes: Routes = [
     {path: '', component: InicioComponent},
@@ -32,7 +33,8 @@ const appRoutes: Routes = [
     {path: 'evaluaciones/editar/:id', component:FormEvaluacionesComponent},
     {path: 'grupos/agregar', component: FormGruposComponent},
     {path: 'grupos/editar/:id', component: FormGruposComponent},
-    {path: 'sesion', component: SesionComponent}
+    {path: 'sesion', component: SesionComponent},
+    {path: 'registro', component: RegistroComponent}
 ];
 
 export const appRoutingProviders: any[] = [];

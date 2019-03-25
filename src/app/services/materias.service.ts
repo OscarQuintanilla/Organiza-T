@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { Materia } from "../models/Materia";     
-import { P } from '@angular/core/src/render3';
-
+import { Materia } from "../models/Materia";    
 @Injectable({
   providedIn: 'root'
 })

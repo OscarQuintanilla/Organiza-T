@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GeneralService } from '../services/general.service';
+import { Usuario } from '../models/Usuario';
 
 @Component({
   selector: 'app-nav',
@@ -9,13 +10,35 @@ import { GeneralService } from '../services/general.service';
 })
 export class NavComponent implements OnInit {
 
-  constructor(private router: Router, private generalService: GeneralService) {}
+  sesionIniciada: any;
+  usuario: Usuario = {
+    idUsuario: "",
+    NombreLogin: "",
+    Nombre: "",
+    Apellido: "",
+    Carrera: "",
+    Correo: "",
+    Clave: "",
+    Imagen: ""
+  }
+
+  constructor(private router: Router, private generalService: GeneralService) { }
 
   ngOnInit() {
     this.generalService.validarSesion();
-     var sesionIniciada = true;
+    if (localStorage.getItem('usuario') != undefined) {
+      this.sesionIniciada = true;
+      this.usuario = JSON.parse(localStorage.getItem('usuario'));
+      this.usuario = this.usuario[0];
+    } else {
+      this.sesionIniciada = false;
+    }
+  }
 
-
+  cerrarSesion() {
+    localStorage.removeItem('usuario');
+    this.sesionIniciada = false;
+    this.router.navigate(['/sesion']);
   }
 
 }
