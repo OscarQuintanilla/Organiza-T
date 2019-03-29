@@ -1,10 +1,14 @@
 <section>
   <span class="titulo">OrganizaT</span>
+  <br>
   <mat-divider mat-inset></mat-divider>
   <ul>
-    <li *ngIf="correo.touched && !correo.valid" class="error">Ingrese su correo o nombre de usuario.</li>
-    <li *ngIf="clave.touched && !clave.valid" class="error">Ingrese su clave.</li>
+    <li *ngIf="errorInicio" class="error">El usuario/correo o contraseña no son correctos</li>
+    <li *ngIf="correo.touched && !correo.valid && !errorInicio " class="error">Ingrese su correo o nombre de usuario.
+    </li>
+    <li *ngIf="clave.touched && !clave.valid && !errorInicio" class="error">Ingrese su clave.</li>
   </ul>
+  <br>
   <form action="">
     <mat-form-field>
       <input matInput placeholder="Correo / Nombre de Usuario" [(ngModel)]="usuario.Correo" name="correo"
@@ -19,7 +23,8 @@
         [disabled]="!correo.valid && !clave.valid">Iniciar Sesión</button>
     </div>
     <div class="enviar">
-      <a [routerLink]="['/registro/']"><span class="subtexto">¿No tienes cuenta? Registrate... </span></a>
+      <span class="subtexto">¿No tienes cuenta? <a [routerLink]="['/registro/']"> <span
+            class="detalle">Registrate...</span> </a> </span>
     </div>
   </form>
 </section>

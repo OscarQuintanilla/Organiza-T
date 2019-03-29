@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Tarea } from '../models/Tarea';
 import { Observable } from 'rxjs';
+import { Usuario } from '../models/Usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -12,20 +13,20 @@ export class TareasService {
 
   constructor(private http: HttpClient) { }
 
-  obtenerListaTareas() {
-    return this.http.get(`${this.API_URI}/tareas`);
+  obtenerListaTareas(idUsuario: Usuario) {
+    return this.http.post(`${this.API_URI}/tareas/lista/`, idUsuario);
   }
 
-  obtenerTareaPorId(id: string){
-    return this.http.get(`${this.API_URI}/tareas/${id}`);
+  obtenerTareaPorId(id: string, usuario: Usuario){
+    return this.http.post(`${this.API_URI}/tareas/${id}`, usuario);
   }
 
   agregarTarea(tarea: Tarea){
     return this.http.post(`${this.API_URI}/tareas`, tarea);
   }
 
-  eliminarTarea(id: string){
-    return this.http.delete(`${this.API_URI}/tareas/${id}`);
+  eliminarTarea(id: string, usuario: Usuario){
+    return this.http.post(`${this.API_URI}/tareas/fin/${id}`, usuario);
   }
 
   actualizarTarea(id: string, actualizacion: Tarea)  {

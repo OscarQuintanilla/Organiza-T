@@ -4,6 +4,7 @@ import { TareasService } from "../../../services/tareas.service";
 import { MateriasService } from "../../../services/materias.service";
 import { GeneralService } from "../../../services/general.service";
 import { ActivatedRoute, Router } from '@angular/router';
+import { Usuario } from 'src/app/models/Usuario';
 
 
 @Component({
@@ -24,6 +25,7 @@ export class FormTareasComponent implements OnInit {
     idUsuario: "",
     idMateria: "",
   };
+  usuario: Usuario;
   identificador: any;
   editar: boolean = false;
 
@@ -33,10 +35,13 @@ export class FormTareasComponent implements OnInit {
     private router: Router, private activedRoute: ActivatedRoute, private materiasServices: MateriasService) { }
 
   ngOnInit() {
+    //this.generalServices.validarSesion();
+    this.usuario = JSON.parse(localStorage.getItem('usuario'));
+    this.usuario = this.usuario[0];
     this.listarMaterias();
     const params = this.activedRoute.snapshot.params;
     if (params.id) {
-      this.tareaService.obtenerTareaPorId(params.id)
+      this.tareaService.obtenerTareaPorId(params.id, this.usuario)
         .subscribe(
           res => {
             this.tarea = res[0];
@@ -45,7 +50,7 @@ export class FormTareasComponent implements OnInit {
         )
       this.editar = true;
     }
-
+    
   }
 
   public guardarTarea() {
@@ -80,7 +85,7 @@ export class FormTareasComponent implements OnInit {
   }
 
   listarMaterias() {
-    this.materiasServices.obtenerListaMaterias().subscribe(
+    this.materiasServices.obtenerListaMaterias(this.usuario).subscribe(
       res => {
         this.materias = res;
         this.pintarImgMateria();
@@ -92,11 +97,10 @@ export class FormTareasComponent implements OnInit {
     var i = 0;
     var avatares: any = [];
     avatares = document.getElementsByClassName('imgMateria');
-    console.log(avatares[0]);
     this.materias.forEach(materia => {
-      if (this.tarea.idMateria == materia.id) { 
+      if (this.tarea.idMateria == materia.id) {
         avatares[i].style.backgroundImage = "url(../../../../../assets/img/letras/" + materia.ruta + ")";
-      }else if(this.tarea.idMateria == "" || this.tarea.idMateria == undefined){
+      } else if (this.tarea.idMateria == "" || this.tarea.idMateria == undefined) {
         avatares[i].style.backgroundImage = "url(../../../../../assets/img/letras/sinImagen.png)";
       }
     });

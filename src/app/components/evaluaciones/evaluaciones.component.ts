@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EvaluacionesService } from "../../services/evaluaciones.service";
 import { MateriasService } from 'src/app/services/materias.service';
+import { Usuario } from 'src/app/models/Usuario';
 
 @Component({
   selector: 'app-evaluaciones',
@@ -11,11 +12,14 @@ export class EvaluacionesComponent implements OnInit {
 
   evaluaciones: any = [];
   materias: any = [];
+  usuario: Usuario;
 
   constructor(private evaluacionesService: EvaluacionesService, private materiasServices: MateriasService) { 
   }
 
   ngOnInit() {
+    this.usuario = JSON.parse(localStorage.getItem('usuario'));
+    this.usuario = this.usuario[0];
     this.listarEvaluaciones();
     this.listarMaterias();
   }
@@ -35,7 +39,7 @@ export class EvaluacionesComponent implements OnInit {
     )
   }
   listarMaterias() {
-    this.materiasServices.obtenerListaMaterias().subscribe(
+    this.materiasServices.obtenerListaMaterias(this.usuario).subscribe(
       res => {
         this.materias = res;
         this.pintarImgMateria();

@@ -3,6 +3,7 @@ import { Materia } from "../../../models/Materia";
 import { MateriasService } from "../../../services/materias.service";
 import { GeneralService } from "../../../services/general.service";
 import { ActivatedRoute, Router } from '@angular/router';
+import { Usuario } from 'src/app/models/Usuario';
 
 @Component({
   selector: 'app-form-materias',
@@ -11,6 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class FormMateriasComponent implements OnInit {
 
+  usuario: Usuario;
   materia: Materia = {
     id: "",
     Nombre: "",
@@ -27,12 +29,18 @@ export class FormMateriasComponent implements OnInit {
     private generalService: GeneralService, private router: Router) { }
 
   ngOnInit() {
+    this.usuario = JSON.parse(localStorage.getItem('usuario'));
+    this.usuario = this.usuario[0];
     this.materia.url = "sinImagen.png";
     const params = this.activedRoute.snapshot.params;
     if (params.id) {
-      this.materiasServices.obtenerMateriaPorId(params.id)
+      this.materiasServices.obtenerMateriaPorId(params.id, this.usuario)
         .subscribe(
           res => {
+            console.log(res);
+            if (this.usuario.idUsuario == res[0].idUsuario ) {
+              
+            }
             this.materia = res[0];
           },
           err => console.error(err)
@@ -60,7 +68,7 @@ export class FormMateriasComponent implements OnInit {
       res => {
         identificador = res;
         this.materia.id = identificador.id;
-        this.materia.idUsuario = "MASTER";
+        this.materia.idUsuario = this.usuario.idUsuario;
         try {
           this.materiasServices.agregarMateria(this.materia).subscribe(
             res => {

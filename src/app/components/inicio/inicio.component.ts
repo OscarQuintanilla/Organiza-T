@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { TareasService } from 'src/app/services/tareas.service';
 import { EvaluacionesService } from 'src/app/services/evaluaciones.service';
 import { MateriasService } from 'src/app/services/materias.service';
+import { Usuario } from 'src/app/models/Usuario';
+import { Router } from '@angular/router';
+import { SesionComponent } from 'src/app/sesion/sesion.component';
+import { NavComponent } from 'src/app/nav/nav.component';
 
 @Component({
   selector: 'app-inicio',
@@ -17,15 +21,25 @@ export class InicioComponent implements OnInit {
   materias: any = [];
   agendaSemana: any = [];
   hoy: Date = new Date();
+  usuario: Usuario;
 
   constructor(
     private tareasService: TareasService,
     private evaluacionesService: EvaluacionesService,
-    private materiasServices: MateriasService
+    private materiasServices: MateriasService,
+    private router: Router,
+    private nav: NavComponent
   ) { }
 
   ngOnInit() {
-    this.obtenerAgendaSemanal();
+    if (this.nav.sesionIniciada) {
+      this.usuario = JSON.parse(localStorage.getItem('usuario'));
+      this.usuario = this.usuario[0];
+      this.obtenerAgendaSemanal();
+    }else{
+      this.router.navigate(['/sesion']);
+    }
+
   }
   borrarTarea(id: string) {
     this.tareasService.eliminarTarea(id).subscribe(
@@ -44,7 +58,9 @@ export class InicioComponent implements OnInit {
   }
 
   obtenerAgendaSemanal() {
-    this.tareasService.obtenerListaTareas().subscribe(
+    this.usuario = JSON.parse(localStorage.getItem('usuario'));
+    this.usuario = this.usuario;
+    this.tareasService.obtenerListaTareas(this.usuario).subscribe(
       res => {
         this.tareas = res;
         for (let i = 0; i < this.tareas.length; i++) {
@@ -84,7 +100,7 @@ export class InicioComponent implements OnInit {
   }
 
   listarMaterias() {
-    this.materiasServices.obtenerListaMaterias().subscribe(
+    this.materiasServices.obtenerListaMaterias(this.usuario).subscribe(
       res => {
         this.materias = res;
         var i = 0;

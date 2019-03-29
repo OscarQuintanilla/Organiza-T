@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GruposService } from 'src/app/services/grupos.service';
 import { MateriasService } from 'src/app/services/materias.service';
+import { Usuario } from 'src/app/models/Usuario';
 
 @Component({
   selector: 'app-grupos',
@@ -9,6 +10,7 @@ import { MateriasService } from 'src/app/services/materias.service';
 })
 export class GruposComponent implements OnInit {
 
+  usuario: Usuario;
   grupos: any = [];
   materias: any = [];
 
@@ -37,7 +39,7 @@ export class GruposComponent implements OnInit {
     );
   }
   listarMaterias() {
-    this.materiasServices.obtenerListaMaterias().subscribe(
+    this.materiasServices.obtenerListaMaterias(this.usuario).subscribe(
       res => {
         this.materias = res;
         this.pintarImgMateria();

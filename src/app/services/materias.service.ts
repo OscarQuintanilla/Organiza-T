@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Materia } from "../models/Materia";    
+import { Usuario } from '../models/Usuario';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,12 +11,12 @@ export class MateriasService {
 
   constructor(private http: HttpClient) { }
 
-  obtenerListaMaterias(){
-    return this.http.get(`${this.API_URI}/materias`);
+  obtenerListaMaterias(usuario: Usuario){
+    return this.http.post(`${this.API_URI}/materias/lista`, usuario);
   }
 
-  obtenerMateriaPorId(id: string){
-    return this.http.get(`${this.API_URI}/materias/${id}`);
+  obtenerMateriaPorId(id: string, usuario:Usuario){
+    return this.http.post(`${this.API_URI}/materias/${id}`, [usuario]);
   }
 
   agregarMateria(materia: Materia){
@@ -26,8 +27,8 @@ export class MateriasService {
     return this.http.put(`${this.API_URI}/materias/${materia.id}`, materia);
   }
 
-  eliminarMateria(id: string){
-    return this.http.delete(`${this.API_URI}/materias/${id}`);
+  eliminarMateria(id: string, usuario: Usuario){
+    return this.http.post(`${this.API_URI}/materias/fin/${id}`, usuario);
   }
 
 }

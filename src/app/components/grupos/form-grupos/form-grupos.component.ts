@@ -4,6 +4,7 @@ import { GruposService } from 'src/app/services/grupos.service';
 import { Grupo } from 'src/app/models/Grupo';
 import { Router, ActivatedRoute } from '@angular/router';
 import { GeneralService } from 'src/app/services/general.service';
+import { Usuario } from 'src/app/models/Usuario';
 
 @Component({
   selector: 'app-form-grupos',
@@ -12,6 +13,7 @@ import { GeneralService } from 'src/app/services/general.service';
 })
 export class FormGruposComponent implements OnInit {
 
+  usuario: Usuario;
   materias: any = [];
   editar: boolean = false;
   grupo: Grupo = {
@@ -26,6 +28,8 @@ export class FormGruposComponent implements OnInit {
     private generalService: GeneralService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.usuario = JSON.parse(localStorage.getItem('usuario'));
+    this.usuario = this.usuario[0];
     this.listarMaterias();
     const params = this.activatedRoute.snapshot.params;
     if (params.id) {
@@ -40,7 +44,7 @@ export class FormGruposComponent implements OnInit {
   }
 
   listarMaterias() {
-    this.materiasServices.obtenerListaMaterias().subscribe(
+    this.materiasServices.obtenerListaMaterias(this.usuario).subscribe(
       res => {
         this.materias = res;
       },

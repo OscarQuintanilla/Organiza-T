@@ -3,6 +3,7 @@ import { TareasService } from '../../services/tareas.service';
 import { PeticionesService } from "../../services/peticiones.services";
 import { Router } from "@angular/router";
 import { MateriasService } from "../../services/materias.service";
+import { Usuario } from 'src/app/models/Usuario';
 
 @Component({
   selector: 'app-tareas',
@@ -15,14 +16,17 @@ export class TareasComponent implements OnInit {
   tareas: any = [];
   materias: any = [];
   ruta: string = "";
+  usuario: Usuario;
 
   constructor(private tareasService: TareasService, private router: Router, private materiasServices: MateriasService) {
   }
   ngOnInit() {
+    this.usuario = JSON.parse(localStorage.getItem('usuario'));
+    this.usuario = this.usuario[0];
     this.listarTareas();
   }
   listarTareas() {
-    this.tareasService.obtenerListaTareas().subscribe(
+    this.tareasService.obtenerListaTareas(this.usuario).subscribe(
       res => {
         this.tareas = res;
         this.listarMaterias();
@@ -31,7 +35,7 @@ export class TareasComponent implements OnInit {
     );
   }
   borrarTarea(id: string) {
-    this.tareasService.eliminarTarea(id).subscribe(
+    this.tareasService.eliminarTarea(id, this.usuario).subscribe(
       res => {
         console.log(res);
         this.listarTareas();
@@ -41,7 +45,7 @@ export class TareasComponent implements OnInit {
   }
 
   listarMaterias() {
-    this.materiasServices.obtenerListaMaterias().subscribe(
+    this.materiasServices.obtenerListaMaterias(this.usuario).subscribe(
       res => {
         this.materias = res;
         this.pintarImgMateria();

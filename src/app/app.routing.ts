@@ -17,7 +17,7 @@ import { SesionComponent } from "./sesion/sesion.component";
 import { RegistroComponent } from './sesion/registro/registro.component';
 
 const appRoutes: Routes = [
-    {path: '', component: InicioComponent},
+    {path: '', component: SesionComponent},
     {path: 'perfil', component: PerfilComponent},
     {path: 'inicio', component: InicioComponent},
     {path: 'tareas', component: TareasComponent},
