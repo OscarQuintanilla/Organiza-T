@@ -1,3 +1,43 @@
-<p>
-  registro works!
-</p>
+<mat-card id="form">
+  <mat-card-title>
+    Registro de Usuario
+  </mat-card-title>
+  <ul>
+    <li *ngIf="NombreLogin.touched && !NombreLogin.valid" class="error">Ingrese su correo o nombre de usuario.
+    </li>
+    <li *ngIf="Nombre.touched && !Nombre.valid" class="error">Ingrese su correo o nombre de usuario.
+    </li>
+    <li *ngIf="NombreLogin.touched && !NombreLogin.valid" class="error">Ingrese su correo o nombre de usuario.
+    </li>
+    <li *ngIf="Clave.touched && !Clave.valid" class="error">Ingrese su clave.
+    </li>
+  </ul>
+  <mat-form-field>
+    <input matInput placeholder="Usuario" [(ngModel)]="usuario.NombreLogin" name="NombreLogin" #NombreLogin="ngModel"
+      required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Nombre" [(ngModel)]="usuario.Nombre" name="Nombre" #Nombre="ngModel" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Apellido" [(ngModel)]="usuario.Apellido" name="Apellido" #Apellido="ngModel">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Carrera que cursas" [(ngModel)]="usuario.Carrera" name="Carrera" #Carrera="ngModel">
+  </mat-form-field>
+  <mat-form-field>
+    <input type="email" matInput placeholder="Correo" [(ngModel)]="usuario.Correo" name="Correo" #Correo="ngModel"
+      required>
+  </mat-form-field>
+  <mat-form-field class="alt">
+    <input type="password" matInput placeholder="Clave" [(ngModel)]="usuario.Clave" name="Clave" #Clave="ngModel"
+      required>
+  </mat-form-field>
+  <button mat-button class="ver" (click)="verClave()">
+    <mat-icon class="mat-18">lock_open</mat-icon>
+  </button>
+  <div style="display: flex; flex-direction: row" id="enviar">
+    <button mat-raised-button color="accent" (click)="editar ? modificarMateria() : guardarMateria()"
+      [disabled]="!NombreLogin.valid">Registrarse</button>
+  </div>
+</mat-card>

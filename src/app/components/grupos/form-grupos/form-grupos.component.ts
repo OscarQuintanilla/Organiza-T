@@ -33,7 +33,7 @@ export class FormGruposComponent implements OnInit {
     this.listarMaterias();
     const params = this.activatedRoute.snapshot.params;
     if (params.id) {
-      this.gruposService.obtnerGrupoPorId(params.id).subscribe(
+      this.gruposService.obtnerGrupoPorId(params.id, this.usuario).subscribe(
         res => {
           this.grupo = res[0];
         }

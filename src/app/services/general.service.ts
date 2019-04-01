@@ -33,29 +33,32 @@ export class GeneralService {
       case "Mar":
         fechaPartes[1] = 3;
         break;
-      case "May":
+      case "Apr":
         fechaPartes[1] = 4;
         break;
-      case "Jun":
+      case "May":
         fechaPartes[1] = 5;
         break;
-      case "Jul":
+      case "Jun":
         fechaPartes[1] = 6;
         break;
-      case "Aug":
+      case "Jul":
         fechaPartes[1] = 7;
         break;
-      case "Sep":
+      case "Aug":
         fechaPartes[1] = 8;
         break;
-      case "Oct":
+      case "Sep":
         fechaPartes[1] = 9;
         break;
-      case "Nov":
+      case "Oct":
         fechaPartes[1] = 10;
         break;
-      case "Dec":
+      case "Nov":
         fechaPartes[1] = 11;
+        break;
+      case "Dec":
+        fechaPartes[1] = 12;
         break;
       case "Jan":
         fechaPartes[1] = 12;
@@ -85,7 +88,7 @@ export class GeneralService {
     return this.http.get(`${this.API_URI}/general/${tipoElemento}`);
   }
 
-  validarSesion(){
+  validarSesion() {
     if (localStorage.getItem("idUsuario") == null) {
       this.router.navigate(['/sesion']);
     }

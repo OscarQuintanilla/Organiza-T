@@ -37,7 +37,7 @@ export class FormEvaluacionesComponent implements OnInit {
     this.listarMaterias();
     const params = this.activatedRoute.snapshot.params;
     if (params.id) {
-      this.evaluacionesService.obtenerEvaluacionPorId(params.id).subscribe(
+      this.evaluacionesService.obtenerEvaluacionPorId(params.id, this.usuario).subscribe(
         res => {
           this.evaluacion = res[0];
         }

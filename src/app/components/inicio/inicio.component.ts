@@ -42,7 +42,7 @@ export class InicioComponent implements OnInit {
 
   }
   borrarTarea(id: string) {
-    this.tareasService.eliminarTarea(id).subscribe(
+    this.tareasService.eliminarTarea(id, this.usuario).subscribe(
       res => {
         this.obtenerAgendaSemanal();
       },
@@ -50,7 +50,7 @@ export class InicioComponent implements OnInit {
     );
   }
   eliminarEvaluacion(id: string) {
-    this.evaluacionesService.eliminarEvaluacion(id).subscribe(
+    this.evaluacionesService.eliminarEvaluacion(id, this.usuario).subscribe(
       res => {
         this.obtenerAgendaSemanal();
       }
@@ -78,7 +78,7 @@ export class InicioComponent implements OnInit {
       },
       error => console.error(error)
     );
-    this.evaluacionesService.obtenerListaEvaluaciones().subscribe(
+    this.evaluacionesService.obtenerListaEvaluaciones(this.usuario).subscribe(
       res => {
         this.evaluaciones = res;
         for (let i = 0; i < this.evaluaciones.length; i++) {

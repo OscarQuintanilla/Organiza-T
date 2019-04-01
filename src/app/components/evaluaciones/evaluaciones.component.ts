@@ -25,14 +25,14 @@ export class EvaluacionesComponent implements OnInit {
   }
 
   listarEvaluaciones() {
-    this.evaluacionesService.obtenerListaEvaluaciones().subscribe(
+    this.evaluacionesService.obtenerListaEvaluaciones(this.usuario).subscribe(
       res => {
         this.evaluaciones = res;
       }
     )
   }
   eliminarEvaluacion(id: string) {
-    this.evaluacionesService.eliminarEvaluacion(id).subscribe(
+    this.evaluacionesService.eliminarEvaluacion(id, this.usuario).subscribe(
       res => {
         this.listarEvaluaciones();
       }

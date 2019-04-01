@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Grupo } from '../models/Grupo';
+import { Usuario } from '../models/Usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +12,12 @@ export class GruposService {
 
   constructor(private http: HttpClient) { }
 
-  listarGrupos(){
-    return this.http.get(`${this.API_URI}/grupos`);
+  listarGrupos(usuario:Usuario){
+    return this.http.post(`${this.API_URI}/grupos/lista`, usuario);
   }
   
-  obtnerGrupoPorId(id: string){
-    return this.http.get(`${this.API_URI}/grupos/${id}`);
+  obtnerGrupoPorId(id: string, usuario: Usuario){
+    return this.http.post(`${this.API_URI}/grupos/${id}`, usuario);
   }
 
   crearGrupo(grupo: Grupo){
@@ -27,8 +28,8 @@ export class GruposService {
     return this.http.put(`${this.API_URI}/grupos/${id}`, grupo);
   }
 
-  eliminarGrupo(id: string){
-    return this.http.delete(`${this.API_URI}/grupos`);
+  eliminarGrupo(id: string, usuario:Usuario){
+    return this.http.post(`${this.API_URI}/grupos/fin/${id}`, usuario);
   }
 
 }

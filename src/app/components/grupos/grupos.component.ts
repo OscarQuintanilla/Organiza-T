@@ -17,11 +17,13 @@ export class GruposComponent implements OnInit {
   constructor(private gruposServices: GruposService, private materiasServices: MateriasService) { }
 
   ngOnInit() {
+    this.usuario = JSON.parse(localStorage.getItem('usuario'));
+    this.usuario = this.usuario[0];
     this.listarGrupos();
   }
 
   listarGrupos(){
-    this.gruposServices.listarGrupos().subscribe(
+    this.gruposServices.listarGrupos(this.usuario).subscribe(
       res => {
         this.grupos = res;
         this.listarMaterias();
@@ -30,8 +32,8 @@ export class GruposComponent implements OnInit {
     );
   }
 
-  eliminarGrupos(id: string){
-    this.gruposServices.eliminarGrupo(id).subscribe(
+  eliminarGrupo(id: string){
+    this.gruposServices.eliminarGrupo(id, this.usuario).subscribe(
       res => {
         this.listarGrupos();
       },
