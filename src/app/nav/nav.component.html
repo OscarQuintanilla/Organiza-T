@@ -8,7 +8,7 @@
     <mat-list>
       <a [routerLink]="['/perfil']">
         <div id="usSideBar">
-          <img src="../../assets/img/{{usuario.Imagen}} " alt="Imagen de Perfil" id="imgSideBar">
+          <img src="../../assets/img/{{usuario.Imagen == '' ? 'sinfoto.png' : usuario.Imagen}} " alt="Imagen de Perfil" id="imgSideBar">
           <h1 class="mat-title"> {{usuario.Nombre}} {{usuario.Apellido}} </h1>
         </div>
       </a>

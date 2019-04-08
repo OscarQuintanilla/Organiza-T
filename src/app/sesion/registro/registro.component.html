@@ -3,41 +3,46 @@
     Registro de Usuario
   </mat-card-title>
   <ul>
-    <li *ngIf="NombreLogin.touched && !NombreLogin.valid" class="error">Ingrese su correo o nombre de usuario.
+    <li *ngIf="NombreLogin.touched && !NombreLogin.valid" class="error">Ingrese un nombre de usuario válido (Entre 8 y
+      16 caracteres).
     </li>
-    <li *ngIf="Nombre.touched && !Nombre.valid" class="error">Ingrese su correo o nombre de usuario.
+    <li *ngIf="Nombre.touched && !Nombre.valid" class="error">Ingrese su nombre (Entre 3 y 16 caracteres).
     </li>
-    <li *ngIf="NombreLogin.touched && !NombreLogin.valid" class="error">Ingrese su correo o nombre de usuario.
+    <li *ngIf="Correo.touched && !Correo.valid" class="error">Ingrese un correo válido.
     </li>
-    <li *ngIf="Clave.touched && !Clave.valid" class="error">Ingrese su clave.
+    <li *ngIf="Clave.touched && !Clave.valid" class="error">Ingrese su clave de acceso (Entre 8 y 32 caracteres) .
     </li>
   </ul>
   <mat-form-field>
     <input matInput placeholder="Usuario" [(ngModel)]="usuario.NombreLogin" name="NombreLogin" #NombreLogin="ngModel"
-      required>
+      required pattern="[A-Za-z0-9._-]{8,16}">
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Nombre" [(ngModel)]="usuario.Nombre" name="Nombre" #Nombre="ngModel" required>
+    <input matInput placeholder="Nombre" [(ngModel)]="usuario.Nombre" name="Nombre" #Nombre="ngModel" required
+      pattern="[A-Za-z]{3,16}">
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Apellido" [(ngModel)]="usuario.Apellido" name="Apellido" #Apellido="ngModel">
+    <input matInput placeholder="Apellido" [(ngModel)]="usuario.Apellido" name="Apellido" #Apellido="ngModel"
+      pattern="[A-Za-z]{0,16}">
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Carrera que cursas" [(ngModel)]="usuario.Carrera" name="Carrera" #Carrera="ngModel">
+    <input matInput placeholder="Carrera que cursas" [(ngModel)]="usuario.Carrera" name="Carrera" #Carrera="ngModel"
+      pattern="[A-Za-z]{0,16}">
   </mat-form-field>
   <mat-form-field>
     <input type="email" matInput placeholder="Correo" [(ngModel)]="usuario.Correo" name="Correo" #Correo="ngModel"
-      required>
+      required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
   </mat-form-field>
   <mat-form-field class="alt">
     <input type="password" matInput placeholder="Clave" [(ngModel)]="usuario.Clave" name="Clave" #Clave="ngModel"
-      required>
+      required pattern=".{8,32}" >
   </mat-form-field>
   <button mat-button class="ver" (click)="verClave()">
     <mat-icon class="mat-18">lock_open</mat-icon>
   </button>
   <div style="display: flex; flex-direction: row" id="enviar">
-    <button mat-raised-button color="accent" (click)="editar ? modificarMateria() : guardarMateria()"
-      [disabled]="!NombreLogin.valid">Registrarse</button>
+    <button mat-raised-button color="primary" [routerLink]="['/']">Regresar</button>
+    <button mat-raised-button color="accent" (click)="registrarUsuario()"
+      [disabled]="!NombreLogin.valid || !Nombre.valid || !Correo.valid || !Clave.valid">Registrarse</button>
   </div>
 </mat-card>

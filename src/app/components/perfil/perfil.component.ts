@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Usuario } from 'src/app/models/Usuario';
+import { SesionService } from 'src/app/services/sesion.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil',
@@ -7,9 +10,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilComponent implements OnInit {
 
-  constructor() { }
+  usuario: Usuario = {
+    idUsuario: "",
+    NombreLogin: "",
+    Nombre: "",
+    Apellido: "",
+    Carrera: "",
+    Correo: "",
+    Clave: "",
+    Imagen: ""
+  }
+  claveCollection: any = [];
+  constructor(private sesionService: SesionService, private router: Router) { }
 
   ngOnInit() {
+    this.usuario = JSON.parse(localStorage.getItem('usuario'));
+    this.usuario = this.usuario[0];
+    this.claveCollection = document.getElementsByName('Clave');
+    this.claveCollection = this.claveCollection[0];
+    console.log(this.usuario);
+  }
+
+  actualizarDatos(){
+    this.sesionService.actualizarUsuario(this.usuario).subscribe(
+      res => {
+        this.router.navigate(['/perfil']);
+      }, 
+      error => console.error(error)
+    )
   }
 
 }

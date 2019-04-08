@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/models/Usuario';
+import { SesionService } from 'src/app/services/sesion.service';
+import { Router } from '@angular/router';
+import { GeneralService } from 'src/app/services/general.service';
 
 @Component({
   selector: 'app-registro',
@@ -18,9 +21,10 @@ export class RegistroComponent implements OnInit {
     Clave: "",
     Imagen: ""
   }
+  idResponse: any = [];
   claveCollection: any = [];
   ver: boolean = false;
-  constructor() { }
+  constructor(private sesionService: SesionService, private router: Router, private generalService: GeneralService) { }
 
   ngOnInit() {
     this.claveCollection = document.getElementsByName('Clave');
@@ -31,10 +35,30 @@ export class RegistroComponent implements OnInit {
     if (this.ver) {
       this.claveCollection.setAttribute('type', 'password');
       this.ver = false;
-    }else{
+    } else {
       this.claveCollection.setAttribute('type', 'text');
       this.ver = true;
     }
+
+  }
+
+  registrarUsuario() {
+    this.generalService.generarId('perfil').subscribe(
+      res => {
+        this.idResponse = res;
+        this.usuario.Imagen = 'nofoto.png'
+        this.usuario.idUsuario = this.idResponse.id
+        this.sesionService.registrarUsuario(this.usuario).subscribe(
+          res => {
+            localStorage.setItem('usuario', JSON.stringify(this.usuario));
+            this.router.navigate(['/']);
+          },
+          error => console.log(error)
+        )
+      }
+    )
+    console.log(this.usuario);
+
     
   }
 

@@ -15,5 +15,13 @@ export class SesionService {
     return this.http.post(`${this.API_URI}/`, usuario);
   }
 
+  public registrarUsuario(usuario: Usuario){
+    return this.http.post(`${this.API_URI}/registrar`, usuario);
+  }
+
+  public actualizarUsuario(usuario: Usuario){
+    return this.http.put(`${this.API_URI}/`, usuario);
+  }
+
 
 }

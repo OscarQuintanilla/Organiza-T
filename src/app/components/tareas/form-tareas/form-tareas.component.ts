@@ -54,7 +54,7 @@ export class FormTareasComponent implements OnInit {
   }
 
   public guardarTarea() {
-    this.tarea.idUsuario = "MASTER";
+    this.tarea.idUsuario = this.usuario.idUsuario;
     this.tarea.FechaEntrega = this.generalServices.convertirFechaParaMSQL(this.tarea.FechaEntrega);
     this.generalServices.generarId('tarea').subscribe(
       res => {

@@ -1,0 +1,24 @@
+mat-form-field {
+    width: 100%;
+}
+
+#enviar{
+   width: 100%;
+}
+
+#enviar > button{
+    margin: auto;
+}
+
+#form {
+    margin: 2% auto;
+    width: 50%;
+}
+
+.alt{
+    width: 85%;
+    margin-right: 2%;
+}
+.ver{
+    width: 5%;
+}

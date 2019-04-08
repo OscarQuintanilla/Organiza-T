@@ -28,7 +28,7 @@ export class SesionComponent implements OnInit {
   constructor(private sesionService: SesionService, private router: Router, private nav: NavComponent) { }
 
   ngOnInit() {
-    localStorage.removeItem("usuario");
+    localStorage.removeItem('usuario');
     if (localStorage.getItem("usuario") != undefined) {
       this.usuario = JSON.parse(localStorage.getItem('usuario'));
       this.usuario = this.usuario[0];
@@ -36,6 +36,7 @@ export class SesionComponent implements OnInit {
         this.router.navigate(['/inicio']);
       } else {
         this.router.navigate(['/']);
+        localStorage.removeItem('usuario');
       }
 
     }
