@@ -31,7 +31,7 @@
   </mat-form-field>
   <mat-form-field>
     <input type="email" matInput placeholder="Correo" [(ngModel)]="usuario.Correo" name="Correo" #Correo="ngModel"
-      required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+      required pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
   </mat-form-field>
   <mat-form-field class="alt">
     <input type="password" matInput placeholder="Clave" [(ngModel)]="usuario.Clave" name="Clave" #Clave="ngModel"

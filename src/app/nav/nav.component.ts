@@ -25,8 +25,8 @@ export class NavComponent implements OnInit {
   constructor(private router: Router, private generalService: GeneralService) { }
 
   ngOnInit() {
-    //this.generalService.validarSesion();
-    if (localStorage.getItem('usuario') != undefined ) {
+    this.generalService.validarSesion();
+    if (localStorage.getItem('usuario') != undefined) {
       this.sesionIniciada = true;
       this.usuario = JSON.parse(localStorage.getItem('usuario'));
       this.usuario = this.usuario[0];

@@ -19,7 +19,8 @@ export class EvaluacionesService {
     return this.http.post(`${this.API_URI}/evaluaciones/${id}`, usuario);
   }
   crearEvaluacion(evaluacion: Evaluacion) {
-    return this.http.post(`${this.API_URI}/evaluaciones`, evaluacion);
+    console.log(evaluacion);
+    return this.http.post(`${this.API_URI}/evaluaciones/crear/crear`, evaluacion);
   }
   modificarEvaluacion(id: string, evaluacion: Evaluacion) {
     return this.http.put(`${this.API_URI}/evaluaciones/${id}`, evaluacion);

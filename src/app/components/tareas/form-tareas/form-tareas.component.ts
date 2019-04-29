@@ -60,17 +60,19 @@ export class FormTareasComponent implements OnInit {
       res => {
         this.identificador = res;
         this.tarea.id = this.identificador.id;
+        console.log("antes de agregarla");
         this.tareaService.agregarTarea(this.tarea)
           .subscribe(
             res => {
+              console.log("Tarea agregada con éxito");
               console.log(res);
             },
-            err => console.error(err)
+            err => console.error("Ocurrió un error al intentar agregar la tarea: " + err)
           );
 
         this.router.navigate(['/tareas']);
       },
-      err => console.error(err)
+      err => console.error("Ocurrió un error en la generación de id: " + err)
     );
   }
 

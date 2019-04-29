@@ -52,7 +52,7 @@ export class FormEvaluacionesComponent implements OnInit {
         this.identificador = res;
         this.evaluacion.id = this.identificador.id;
         this.evaluacion.Fecha = this.generalService.convertirFechaParaMSQL(this.evaluacion.Fecha);
-        this.evaluacion.idUsuario = 'MASTER';
+        this.evaluacion.idUsuario = this.usuario.idUsuario;
         console.log(this.evaluacion.id)
         this.evaluacionesService.crearEvaluacion(this.evaluacion).subscribe(
           res => {

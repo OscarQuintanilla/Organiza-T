@@ -21,7 +21,7 @@ export class GruposService {
   }
 
   crearGrupo(grupo: Grupo){
-    return this.http.post(`${this.API_URI}/grupos`, grupo);
+    return this.http.post(`${this.API_URI}/grupos/crear/crear`, grupo);
   }
 
   modificarGrupo(grupo: Grupo, id: string){

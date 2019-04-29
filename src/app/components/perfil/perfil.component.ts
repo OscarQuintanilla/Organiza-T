@@ -20,6 +20,7 @@ export class PerfilComponent implements OnInit {
     Clave: "",
     Imagen: ""
   }
+  ver: boolean = false;
   claveCollection: any = [];
   constructor(private sesionService: SesionService, private router: Router) { }
 
@@ -40,4 +41,14 @@ export class PerfilComponent implements OnInit {
     )
   }
 
+    verClave() {
+    if (this.ver) {
+      this.claveCollection.setAttribute('type', 'password');
+      this.ver = false;
+    } else {
+      this.claveCollection.setAttribute('type', 'text');
+      this.ver = true;
+    }
+
+  }
 }

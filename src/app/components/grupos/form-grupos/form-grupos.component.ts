@@ -53,7 +53,7 @@ export class FormGruposComponent implements OnInit {
   }
 
   guardarGrupo() {
-    this.grupo.idUsuario = "MASTER";
+    this.grupo.idUsuario = this.usuario.idUsuario;
     this.generalService.generarId("grupo").subscribe(
       res => {
         let id: any = res;

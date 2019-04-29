@@ -17,19 +17,20 @@ export class TareasService {
     return this.http.post(`${this.API_URI}/tareas/lista/`, idUsuario);
   }
 
-  obtenerTareaPorId(id: string, usuario: Usuario){
+  obtenerTareaPorId(id: string, usuario: Usuario) {
     return this.http.post(`${this.API_URI}/tareas/${id}`, usuario);
   }
 
-  agregarTarea(tarea: Tarea){
-    return this.http.post(`${this.API_URI}/tareas`, tarea);
+  agregarTarea(tarea: Tarea) {
+    console.log(tarea);
+    return this.http.post(`${this.API_URI}/tareas/crear/crear`, tarea);
   }
 
-  eliminarTarea(id: string, usuario: Usuario){
+  eliminarTarea(id: string, usuario: Usuario) {
     return this.http.post(`${this.API_URI}/tareas/fin/${id}`, usuario);
   }
 
-  actualizarTarea(id: string, actualizacion: Tarea)  {
+  actualizarTarea(id: string, actualizacion: Tarea) {
     return this.http.put(`${this.API_URI}/tareas/${id}`, actualizacion);
   }
 

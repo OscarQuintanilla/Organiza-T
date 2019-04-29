@@ -28,10 +28,10 @@ export class SesionComponent implements OnInit {
   constructor(private sesionService: SesionService, private router: Router, private nav: NavComponent) { }
 
   ngOnInit() {
-    localStorage.removeItem('usuario');
     if (localStorage.getItem("usuario") != undefined) {
       this.usuario = JSON.parse(localStorage.getItem('usuario'));
       this.usuario = this.usuario[0];
+      console.log(this.usuario);
       if (this.usuario.idUsuario != "") {
         this.router.navigate(['/inicio']);
       } else {
@@ -61,8 +61,9 @@ export class SesionComponent implements OnInit {
           ) {
             console.log(this.usuario.Nombre + this.usuario.idUsuario)
             this.errorInicio = false;
+            //this.nav.usuario = this.usuario;
             this.nav.sesionIniciada = true;
-            this.router.navigate(['/inicio']);
+            this.router.navigate(['/inicio']);  
           }
         } else {
           console.log("Error en los datos");

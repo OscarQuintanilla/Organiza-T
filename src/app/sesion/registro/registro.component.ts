@@ -3,6 +3,7 @@ import { Usuario } from 'src/app/models/Usuario';
 import { SesionService } from 'src/app/services/sesion.service';
 import { Router } from '@angular/router';
 import { GeneralService } from 'src/app/services/general.service';
+import { NavComponent } from 'src/app/nav/nav.component';
 
 @Component({
   selector: 'app-registro',
@@ -24,7 +25,8 @@ export class RegistroComponent implements OnInit {
   idResponse: any = [];
   claveCollection: any = [];
   ver: boolean = false;
-  constructor(private sesionService: SesionService, private router: Router, private generalService: GeneralService) { }
+  constructor(private sesionService: SesionService, private router: Router, private generalService: GeneralService,
+    private nav: NavComponent) { }
 
   ngOnInit() {
     this.claveCollection = document.getElementsByName('Clave');

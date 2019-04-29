@@ -20,7 +20,7 @@ export class MateriasService {
   }
 
   agregarMateria(materia: Materia){
-    return this.http.post(`${this.API_URI}/materias`, materia);
+    return this.http.post(`${this.API_URI}/materias/crear/crear`, materia);
   }
 
   actualizarMateria(materia: Materia){
